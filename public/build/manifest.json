@@ -1,0 +1,147 @@
+{
+  "_showdown-ccde4f91.js": {
+    "file": "assets/showdown-ccde4f91.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/css/app.styl": {
+    "file": "assets/app-9c758795.css",
+    "isEntry": true,
+    "src": "resources/css/app.styl"
+  },
+  "resources/img/board.jpg": {
+    "file": "assets/board-06749b71.jpg",
+    "src": "resources/img/board.jpg"
+  },
+  "resources/img/google.jpg": {
+    "file": "assets/google-7cf1c39a.jpg",
+    "src": "resources/img/google.jpg"
+  },
+  "resources/img/login.jpg": {
+    "file": "assets/login-324a96f9.jpg",
+    "src": "resources/img/login.jpg"
+  },
+  "resources/img/steam.jpg": {
+    "file": "assets/steam-cf00e6a9.jpg",
+    "src": "resources/img/steam.jpg"
+  },
+  "resources/js/Pages/Auth.vue": {
+    "file": "assets/Auth-07377d05.js",
+    "imports": [
+      "resources/js/app.js",
+      "resources/js/Pages/Modals/Auth.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Auth.vue"
+  },
+  "resources/js/Pages/Board.vue": {
+    "file": "assets/Board-5af9396c.js",
+    "imports": [
+      "resources/js/Pages/Layout.vue",
+      "resources/js/Pages/Modals/Card.vue",
+      "resources/js/app.js",
+      "_showdown-ccde4f91.js",
+      "resources/js/Pages/Modals/Column.vue",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Board.vue"
+  },
+  "resources/js/Pages/Layout.vue": {
+    "file": "assets/Layout-fb2f358b.js",
+    "imports": [
+      "resources/js/app.js",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Layout.vue"
+  },
+  "resources/js/Pages/Modals/Auth.vue": {
+    "file": "assets/Auth-13262063.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Modals/Auth.vue"
+  },
+  "resources/js/Pages/Modals/Board.vue": {
+    "file": "assets/Board-7d25bad0.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Modals/Board.vue"
+  },
+  "resources/js/Pages/Modals/Card.vue": {
+    "file": "assets/Card-fb1077e5.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Modals/Card.vue"
+  },
+  "resources/js/Pages/Modals/Column.vue": {
+    "file": "assets/Column-48d45756.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Modals/Column.vue"
+  },
+  "resources/js/Pages/Page.vue": {
+    "file": "assets/Page-f7376e82.js",
+    "imports": [
+      "resources/js/Pages/Layout.vue",
+      "resources/js/app.js",
+      "_showdown-ccde4f91.js",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Page.vue"
+  },
+  "resources/js/Pages/Show.vue": {
+    "file": "assets/Show-41e38cfa.js",
+    "imports": [
+      "resources/js/Pages/Layout.vue",
+      "resources/js/app.js",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Show.vue"
+  },
+  "resources/js/Pages/index.vue": {
+    "file": "assets/index-bf0da03a.js",
+    "imports": [
+      "resources/js/Pages/Layout.vue",
+      "resources/js/app.js",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/index.vue"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-438f3c48.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-438f3c48.css"
+    ],
+    "dynamicImports": [
+      "resources/js/Pages/Auth.vue",
+      "resources/js/Pages/Board.vue",
+      "resources/js/Pages/Layout.vue",
+      "resources/js/Pages/Modals/Auth.vue",
+      "resources/js/Pages/Modals/Board.vue",
+      "resources/js/Pages/Modals/Card.vue",
+      "resources/js/Pages/Modals/Column.vue",
+      "resources/js/Pages/Page.vue",
+      "resources/js/Pages/Show.vue",
+      "resources/js/Pages/index.vue"
+    ],
+    "file": "assets/app-9f8f0872.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

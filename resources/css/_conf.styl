@@ -1,0 +1,33 @@
+// Colors 
+color-white = #fff
+color-black = #000
+color-gray = #bbb
+color-primary = #1F2937
+
+images = '../img/'
+
+animate(speed = 5, delay = 0)
+    transition all (speed/10)s ease (delay/10)s
+
+abscenter(width = 300, height = 150)
+    position absolute
+    top 50%
+    left 50%
+    width (width)px
+    height (height)px
+    margin-left -1 * (width/2)px
+    margin-top -1 * (height/2)px
+    text-align center
+
+pos(t = 0, b = 0, l = 0, r = 0)
+    top t
+    left l
+    right r
+    bottom b
+
+
+cover(path, x = center, y = center)
+    background url(images + path) x y no-repeat #000
+    background-size cover
+    height 100vh
+    width 100vh

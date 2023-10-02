@@ -1,0 +1,74 @@
+.sidenav
+    list-style none
+    display flex
+    flex-direction column
+    a
+        display block
+        padding 20px
+        color #fff
+        position relative
+        background #1F2937
+    .active
+        background #1F2937
+        position relative
+        a
+            background #fff
+            color #000
+            border-radius 10px 0 0 10px
+
+.sidebar
+    width 70px
+    overflow hidden
+    position fixed
+    box-shadow 0 4px 10px #000
+    animate()
+    h1
+        opacity 0
+        visibility hidden
+        animate()
+    li a
+        display flex
+        width 100%
+        align-items center
+        padding 10px
+    i
+        --ggs 2
+    .icon
+        width 45px
+        height 45px
+        min-width 45px
+        margin-right 10px
+        display flex
+        justify-content center
+        align-items center
+        border-radius 5px
+    .name
+        overflow hidden
+        display -webkit-box
+        -webkit-line-clamp 2
+        -webkit-box-orient vertical
+    button
+        display none
+        position absolute
+        right 0
+        opacity 0
+        animate()
+    &:hover
+        width 200px
+        overflow-y auto
+        &::-webkit-scrollbar
+            width 5px
+        &::-webkit-scrollbar-track
+            background transparent
+        &::-webkit-scrollbar-thumb
+            background #bbb
+            border-radius 5px
+        h1
+            visibility visible
+            opacity 1
+        button
+            display block
+            opacity 1
+
+.main
+    margin-left 70px

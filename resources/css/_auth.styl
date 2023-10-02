@@ -1,0 +1,45 @@
+.auth-via
+    animate()
+    position relative
+    cursor pointer
+    opacity 0.5
+    box-shadow inset 0 0 100px #000
+    &:hover
+        width 200vh
+        opacity 1
+        z-index 2
+        span
+            opacity 1
+            animate(5, 2)
+    span
+        abscenter()
+        background #fff
+        padding-top 30px
+        border-radius 10px
+        box-shadow 0 0 50px #000
+        font-size 28px
+        background rgb(119,119,119)
+        background linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%)
+        backdrop-filter blur(5px)
+        text-shadow 1px 1px rgba(255, 255, 255, 0.7)
+        border 1px solid rgba(255, 255, 255, 0.9)
+        opacity 0
+    b
+        display block
+        font-size 32px
+
+.google
+    cover('google.jpg')
+
+.steam
+    cover('steam.jpg')
+
+.login
+    cover('login.jpg')
+    border-left 1px solid rgba(255, 255, 255, 0.3)
+    border-right 1px solid rgba(255, 255, 255, 0.3)
+
+.auth-container
+    display flex
+    justify-content center
+    background #000
