@@ -7,6 +7,7 @@
   let form = ref();
   let errors = ref();
   let positions = ref();
+  let readonly = ref();
   const focus = ref();
   const page = usePage();
   export default {
@@ -15,7 +16,8 @@
       return {data, title};
     },
     methods: {
-      open(value) {
+      open(value, editable = false) {
+        readonly.value = !editable;
         const formData = {
           link: value.link,
           title: value.title,
@@ -158,25 +160,33 @@ const todoExample =
         <form class="form flex gap-5" @submit.prevent="submit">
           <div class="flex-1">
           <div class="form-input pt-5 pb-2.5">
-            <input type="text" v-model="form.link" id="link" placeholder="Link" @change="changeLink($event)">
+            <input :readonly="readonly" type="text" v-model="form.link" id="link" placeholder="Link" @change="changeLink($event)">
             <label for="link">Link (Will try to fill the empty fields)</label>
           </div>
           <div class="form-input pt-5 pb-2.5">
-            <input type="text" v-model="form.title" id="title" placeholder="Title" ref="focus">
+            <input :readonly="readonly" type="text" v-model="form.title" id="title" placeholder="Title" ref="focus">
             <label for="title">Title</label>
           </div>
           <div class="form-input form-textarea pt-5">
-            <textarea type="text" v-model="form.description" id="description" placeholder="Description" @keydown="textareaKeys($event)"></textarea>
+            <textarea :readonly="readonly"
+              type="text"
+              id="description"
+              placeholder="Description"
+              v-model="form.description"
+              @keydown="textareaKeys($event)"></textarea>
             <label for="description">Description</label>
           </div>
           <div class="form-file pt-2.5">
-              <label for="cover">
-                Cover (Click or Ctrl+V to change)
+              <label for="cover" v-if="!readonly">
+                Cover (Click here or Ctrl+V to change)
                 <img v-bind:src="form.cover">
                 <input type="file"
                   id="cover"
                   @input="form.cover = $event.target.files[0]"
                   @change="image($event)">
+              </label>
+              <label for="cover" v-if="readonly && form.cover">
+                <img v-bind:src="form.cover">
               </label>
           </div>
         </div>
@@ -184,9 +194,13 @@ const todoExample =
           <div class="flex flex-col h-full gap-3">
             <div class="form-textarea form-todo flex-1">
               <label for="todo" class="leading-5">Todo:</label>
-              <textarea v-model="form.todo" id="todo" :placeholder="todoExample" @keydown="textareaKeys($event)"></textarea>
+              <textarea :readonly="readonly"
+                v-model="form.todo"
+                id="todo"
+                :placeholder="todoExample"
+                @keydown="textareaKeys($event)"></textarea>
             </div>
-            <div>
+            <div v-if="!readonly">
               <button type="submit" class="button w-full">Save</button>
             </div>
           </div>

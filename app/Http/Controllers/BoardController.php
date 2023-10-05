@@ -16,13 +16,17 @@ class BoardController extends Controller
 
     public function show($id) {
         $board = Board::find($id);
+        if (!$board || ($board->user_id !== auth()->id() && !$board->public))
+            return Inertia::render(404);
+
         $columns = Column::where('board_id', $id)
             ->with(['cards' => function($q) { $q->orderBy('position', 'asc'); }])
             ->orderBy('position', 'asc')
             ->get();
         return Inertia::render('Board', [
             'board' => $board,
-            'columns' => $columns
+            'columns' => $columns,
+            'editable' => $board->user_id === auth()->id()
         ]);
     }
 
@@ -61,6 +65,9 @@ class BoardController extends Controller
         unset($data['icon']);
 
         $model = Board::find($id);
+        if (!$model || $model->user_id !== auth()->id())
+            return Inertia::render(404);
+
         // Icon
         $this->changeImage('icon', 50, 50, $request, $model, true);
         // Background

@@ -1,20 +1,25 @@
 <script setup>
 import Layout from './Layout.vue'
 import cardModal from './Modals/Card.vue';
+import boardModal from './Modals/Board.vue';
+import columnModal from './Modals/Column.vue';
 import axios from 'axios'
 import { Head } from '@inertiajs/vue3'
 import showdown from 'showdown';
 import { ref } from 'vue';
 
-import columnModal from './Modals/Column.vue';
-const props = defineProps({ board: Object, columns: Object })
+const props = defineProps({ board: Object, columns: Object, editable: Boolean })
 
-const openModal = (data) => {
+const openColumnModal = (data) => {
   columnModal.methods.open(data)
 }
 
-const openCardModal = (data) => {
-    cardModal.methods.open(data);
+const openCardModal = (data, editable) => {
+  cardModal.methods.open(data, editable);
+}
+
+const openBoardModal = (data) => {
+  boardModal.methods.open(data, true);
 }
 
 const converter = new showdown.Converter();
@@ -159,11 +164,17 @@ function switchMode() {
 <template>
   <Layout>
     <Head :title="'Board / ' + board.title" />
-    <div class="board" :class="isLight ? 'mode-light' : 'mode-dark'"
+    <div class="board" :class="{'mode-light': isLight, 'mode-dark': !isLight, 'readonly': !editable}"
         :style="[board?.background ? { backgroundImage: 'url('+board?.background+')'} : {}]">
         <div class="header">
-          <img :src="board?.icon" class="icon">
+          <a class="cursor-pointer icon" @click="openBoardModal(board)">
+            <span><i class="gg-pen"></i></span>
+            <img :src="board?.icon">
+          </a>
           <h1>{{ board.title }}</h1>
+          <div class="secure-icon">
+            <i :class="board.public ? 'gg-lock-unlock' : 'gg-lock'"></i>
+          </div>
           <div class="toggle-switch">
             <label>
                 <input type="checkbox" @click="switchMode()" :checked="!isLight">
@@ -176,15 +187,16 @@ function switchMode() {
           <div v-for="column in columns" :id="column.id" class="drag">
             <div class="glass column">
                 <h4 class="text-lg font-bold px-2 py-1" :class="{'text-white': board.dark }" draggable="true">
-                  <a class="float-right cursor-pointer" @click="openModal(column)">⚙️</a>
+                  <a class="float-right cursor-pointer edit-column" @click="openColumnModal(column)">⚙️</a>
                   {{ column.title }}
                 </h4>
                 <div class="card-container">
+                  <div class="card-droptarget" v-if="!column.cards.length"></div>
                   <template v-for="card in column.cards">
                     <!-- <Card :card="card"></Card> -->
-                    <div class="card cursor-pointer shadow-md drag-card" @click="openCardModal(card)" draggable="true" :id="'card-'+card.id">
+                    <div class="card cursor-pointer shadow-md drag-card" @click="openCardModal(card, editable)" draggable="true" :id="'card-'+card.id">
                         <img :src="card.cover" draggable="false"/>
-                        <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo }">{{ card.title }}</h6>
+                        <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo, 'position-absolute': card.cover }" v-if="card.title">{{ card.title }}</h6>
                         <div v-if="card.description" class="description" v-html="toHtml(card.description)"></div>
                         <div v-if="card.todo"
                           class="checklist p-2 cursor-default"
@@ -199,7 +211,7 @@ function switchMode() {
             </div>
             <div class="droptarget"></div>
           </div>
-            <div class="glass column add" @click="openModal({title: 'New column', board_id: board.id})"></div>
+            <div class="glass column add" @click="openColumnModal({title: 'New column', board_id: board.id})"></div>
         </div>
       </div>
       <columnModal></columnModal>

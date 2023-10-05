@@ -15,7 +15,7 @@
             &::placeholder
                 color #fff
             &:not(:placeholder-shown) + label,
-            &:focus + label
+            &:focus:not([readonly]) + label
                 top -5px
                 left 0px
         label

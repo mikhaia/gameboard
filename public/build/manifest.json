@@ -1,12 +1,12 @@
 {
-  "_showdown-f121f531.js": {
-    "file": "assets/showdown-f121f531.js",
+  "_showdown-b4724bea.js": {
+    "file": "assets/showdown-b4724bea.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/css/app.styl": {
-    "file": "assets/app-9c758795.css",
+    "file": "assets/app-cce188d6.css",
     "isEntry": true,
     "src": "resources/css/app.styl"
   },
@@ -26,8 +26,18 @@
     "file": "assets/steam-cf00e6a9.jpg",
     "src": "resources/img/steam.jpg"
   },
+  "resources/js/Pages/404.vue": {
+    "file": "assets/404-045dff4c.js",
+    "imports": [
+      "resources/js/Pages/Layout.vue",
+      "resources/js/app.js",
+      "resources/js/Pages/Modals/Board.vue"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/404.vue"
+  },
   "resources/js/Pages/Auth.vue": {
-    "file": "assets/Auth-c74c0556.js",
+    "file": "assets/Auth-94c2f4d0.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Modals/Auth.vue"
@@ -36,20 +46,20 @@
     "src": "resources/js/Pages/Auth.vue"
   },
   "resources/js/Pages/Board.vue": {
-    "file": "assets/Board-fd0286c9.js",
+    "file": "assets/Board-f861171b.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/Pages/Modals/Card.vue",
-      "resources/js/app.js",
-      "_showdown-f121f531.js",
+      "resources/js/Pages/Modals/Board.vue",
       "resources/js/Pages/Modals/Column.vue",
-      "resources/js/Pages/Modals/Board.vue"
+      "resources/js/app.js",
+      "_showdown-b4724bea.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Board.vue"
   },
   "resources/js/Pages/Index.vue": {
-    "file": "assets/Index-46613721.js",
+    "file": "assets/Index-b2eceb8a.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
@@ -59,7 +69,7 @@
     "src": "resources/js/Pages/Index.vue"
   },
   "resources/js/Pages/Layout.vue": {
-    "file": "assets/Layout-0b539d8a.js",
+    "file": "assets/Layout-e2f8248c.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Modals/Board.vue"
@@ -68,7 +78,7 @@
     "src": "resources/js/Pages/Layout.vue"
   },
   "resources/js/Pages/Modals/Auth.vue": {
-    "file": "assets/Auth-9ac02cec.js",
+    "file": "assets/Auth-f95e4638.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -76,7 +86,7 @@
     "src": "resources/js/Pages/Modals/Auth.vue"
   },
   "resources/js/Pages/Modals/Board.vue": {
-    "file": "assets/Board-a7cd900f.js",
+    "file": "assets/Board-e67c95a1.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -84,7 +94,7 @@
     "src": "resources/js/Pages/Modals/Board.vue"
   },
   "resources/js/Pages/Modals/Card.vue": {
-    "file": "assets/Card-cfcf565c.js",
+    "file": "assets/Card-61fcf559.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -92,7 +102,7 @@
     "src": "resources/js/Pages/Modals/Card.vue"
   },
   "resources/js/Pages/Modals/Column.vue": {
-    "file": "assets/Column-c22031a6.js",
+    "file": "assets/Column-b90f9d63.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -100,18 +110,18 @@
     "src": "resources/js/Pages/Modals/Column.vue"
   },
   "resources/js/Pages/Page.vue": {
-    "file": "assets/Page-1f8cc6db.js",
+    "file": "assets/Page-b185fbe4.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
-      "_showdown-f121f531.js",
+      "_showdown-b4724bea.js",
       "resources/js/Pages/Modals/Board.vue"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Page.vue"
   },
   "resources/js/Pages/Show.vue": {
-    "file": "assets/Show-f803248b.js",
+    "file": "assets/Show-19238be3.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
@@ -129,6 +139,7 @@
       "assets/app-438f3c48.css"
     ],
     "dynamicImports": [
+      "resources/js/Pages/404.vue",
       "resources/js/Pages/Auth.vue",
       "resources/js/Pages/Board.vue",
       "resources/js/Pages/Index.vue",
@@ -140,7 +151,7 @@
       "resources/js/Pages/Page.vue",
       "resources/js/Pages/Show.vue"
     ],
-    "file": "assets/app-08be0705.js",
+    "file": "assets/app-57e11b92.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

@@ -15,7 +15,7 @@ function createNewBoard() {
     <Head title="Welcome page" />
     <div class="dashboard" :style="{backgroundImage: `url(${props.background})`}">
       <h3>Your boards</h3>
-      <ul>
+      <ul class="text-center">
         <li v-for="item in page.props.boards">
           <div class="card cursor-pointer">
             <Link :href="'/boards/'+item.id">
@@ -37,7 +37,7 @@ function createNewBoard() {
       <hr class="m-5">
 
       <h3>Project pages</h3>
-      <ul>
+      <ul class="text-center">
         <li>
           <div class="card opacity-60">
             <div class="back" :style="{backgroundImage: 'url(./img/dashboard/templates.jpg)'}"></div>
@@ -45,13 +45,15 @@ function createNewBoard() {
           </div>
         </li>
         <li>
-          <div class="card opacity-60">
-            <div class="back" :style="{backgroundImage: 'url(./img/dashboard/bug-report.jpg)'}"></div>
-            <h6 class="px-2 py-1 title w-full text-center">Bug report [Not implemented yet]</h6>
+          <div class="card cursor-pointer">
+            <Link href="http://board.neapp.ru/boards/01hbzhapktrn3tr634p356hht1">
+              <div class="back" :style="{backgroundImage: 'url(./img/dashboard/bug-report.jpg)'}"></div>
+              <h6 class="px-2 py-1 title w-full text-center">Bug List</h6>
+            </Link>
           </div>
         </li>
         <li>
-          <div class="card cursor-pointer	">
+          <div class="card cursor-pointer">
             <Link href="/author">
               <div class="back" :style="{backgroundImage: 'url(./img/dashboard/author.jpg)'}"></div>
               <h6 class="px-2 py-1 title w-full text-center">Author</h6>

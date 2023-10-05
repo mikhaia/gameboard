@@ -15,7 +15,8 @@
       return {data, title, focus};
     },
     methods: {
-      open(value) {
+      open(value, expanded = false) {
+        displayDetails.value = expanded;
         const formData = {
           title: value.title,
           icon: value.icon,
@@ -27,6 +28,8 @@
           formData._method = 'PUT';
         }
         form = useForm(formData);
+        form.public = !!form.public;
+        form.dark = !!form.dark;
         data.value = value;
         title.value = value.title;
         setTimeout(() => focus.value.focus(), 100);
@@ -113,7 +116,7 @@
               <div class="form-checkbox flex-1 pb-2.5">
                 <label>
                   <input type="checkbox" v-model="form.dark">
-                  Dark back
+                  {{ form.dark ? 'Black' : 'White' }} titles
                 </label>
               </div>
             </div>
