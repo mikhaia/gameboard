@@ -207,7 +207,7 @@ function switchMode() {
                     <div class="card-droptarget"></div>
                   </template>
                 </div>
-                <a class="btn-create glass" @click="openCardModal({title: '', column_id: column.id})">Create new</a>
+                <a class="btn-create glass" @click="openCardModal({title: '', column_id: column.id}, editable)">Create new</a>
             </div>
             <div class="droptarget"></div>
           </div>
