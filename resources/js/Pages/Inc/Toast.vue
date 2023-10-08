@@ -39,5 +39,6 @@ if (page.props.toast.error) {
         :class="{'opacity-0': !isShowing, 'opacity-100': isShowing, 'z-0': !isShowing}"
         class="toast"
         v-bind:class="type"
-      >{{ message }}</div>
+        v-html="message"
+      ></div>
 </template>

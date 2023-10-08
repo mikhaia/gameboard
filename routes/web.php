@@ -41,10 +41,13 @@ Inertia::share('toast', function() {
 
 
 Route::get('auth', [AuthController::class, 'index'])->name('login');
-Route::post('auth', [AuthController::class, 'login']);
+Route::post('signin', [AuthController::class, 'login'])->name('signin');
+Route::post('signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('recovery', [AuthController::class, 'recovery'])->name('recovery');
 Route::get('steam', SteamAuthController::class);
 Route::get('google', GoogleAuthController::class);
 Route::get('logout', [AuthController::class, 'logout']);
+
 
 Route::middleware(['auth'])->group(function () {
   Inertia::share('boards', fn() => Board::where('user_id', Auth::id())->get());
@@ -67,4 +70,6 @@ Route::middleware(['auth'])->group(function () {
   Route::put('cards/sort/{columndId}/{cardId}', [CardController::class, 'sort']);
   Route::get('geturldata', [CardController::class, 'geturldata']);
   Route::get('getimage', [CardController::class, 'getimage']);
+  Route::put('profile', [UserController::class, 'profile']);
+  Route::post('password', [UserController::class, 'password']);
 });

@@ -169,10 +169,6 @@ class DisplayVideo extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'internalDebuggingConfig' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
                 'orderBy' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -2930,10 +2926,6 @@ class DisplayVideo extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'advertiserId' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
                 'partnerId' => [
                   'location' => 'query',

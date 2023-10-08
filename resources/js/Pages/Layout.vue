@@ -1,11 +1,21 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3'
 import boardModal from './Modals/Board.vue'
+import profileModal from './Modals/Profile.vue'
+import passwordModal from './Modals/Password.vue'
 
 const page = usePage()
 
 const openModal = (data) => {
   boardModal.methods.open(data)
+}
+
+const openProfileModal = () => {
+  profileModal.methods.open();
+}
+
+const openPasswordModal = () => {
+  passwordModal.methods.open();
 }
 </script>
 
@@ -40,13 +50,24 @@ const openModal = (data) => {
     
     <main class="relative main">
       <div class="user-panel">
-        <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
-        <img v-else :src="'/data/avatar/avatar.jpg'" class="avatar">
-        {{ page.props.user.name }}
-        <Link href="/logout" class="exit">x</Link>
+        <div class="user-info">
+          <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
+          <img v-else :src="'/data/avatar/avatar.jpg'" class="avatar">
+          {{ page.props.user.name }}
+          <Link href="/logout" class="exit">x</Link>
+        </div>
+        <div class="user-dropdown right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1">
+            <a @click="openProfileModal()" class="block px-4 py-2 text-sm">Profile settigns</a>
+            <a @click="openPasswordModal()" class="block px-4 py-2 text-sm">Change password</a>
+            <Link href="/logout" class="block px-4 py-2 text-sm">Logout</Link>
+          </div>
+        </div>
       </div>
       <slot />
       <boardModal></boardModal>
+      <profileModal></profileModal>
+      <passwordModal></passwordModal>
     </main>
 </div>
 </template>
