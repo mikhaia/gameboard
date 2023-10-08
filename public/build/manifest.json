@@ -1,12 +1,12 @@
 {
-  "_showdown-efd0f6cf.js": {
-    "file": "assets/showdown-efd0f6cf.js",
+  "_showdown-a742d2cb.js": {
+    "file": "assets/showdown-a742d2cb.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/css/app.styl": {
-    "file": "assets/app-adb045bc.css",
+    "file": "assets/app-45a06f0f.css",
     "isEntry": true,
     "src": "resources/css/app.styl"
   },
@@ -27,7 +27,7 @@
     "src": "resources/img/steam.jpg"
   },
   "resources/js/Pages/404.vue": {
-    "file": "assets/404-f8b91b59.js",
+    "file": "assets/404-3394ced8.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
@@ -39,7 +39,7 @@
     "src": "resources/js/Pages/404.vue"
   },
   "resources/js/Pages/Auth.vue": {
-    "file": "assets/Auth-ee9f9b33.js",
+    "file": "assets/Auth-fbdcbac9.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Modals/Auth.vue"
@@ -48,14 +48,14 @@
     "src": "resources/js/Pages/Auth.vue"
   },
   "resources/js/Pages/Board.vue": {
-    "file": "assets/Board-d2319828.js",
+    "file": "assets/Board-b7b3a17a.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/Pages/Modals/Card.vue",
       "resources/js/Pages/Modals/Board.vue",
       "resources/js/Pages/Modals/Column.vue",
       "resources/js/app.js",
-      "_showdown-efd0f6cf.js",
+      "_showdown-a742d2cb.js",
       "resources/js/Pages/Modals/Profile.vue",
       "resources/js/Pages/Modals/Password.vue"
     ],
@@ -63,7 +63,7 @@
     "src": "resources/js/Pages/Board.vue"
   },
   "resources/js/Pages/Index.vue": {
-    "file": "assets/Index-669d1c2f.js",
+    "file": "assets/Index-e6011c7f.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
@@ -75,7 +75,7 @@
     "src": "resources/js/Pages/Index.vue"
   },
   "resources/js/Pages/Layout.vue": {
-    "file": "assets/Layout-f71d52e0.js",
+    "file": "assets/Layout-3ed25d72.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Modals/Board.vue",
@@ -86,7 +86,7 @@
     "src": "resources/js/Pages/Layout.vue"
   },
   "resources/js/Pages/Modals/Auth.vue": {
-    "file": "assets/Auth-a49a3d8a.js",
+    "file": "assets/Auth-2ceb6ece.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -94,7 +94,7 @@
     "src": "resources/js/Pages/Modals/Auth.vue"
   },
   "resources/js/Pages/Modals/Board.vue": {
-    "file": "assets/Board-ddd1e06e.js",
+    "file": "assets/Board-a57eb2d0.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -102,7 +102,7 @@
     "src": "resources/js/Pages/Modals/Board.vue"
   },
   "resources/js/Pages/Modals/Card.vue": {
-    "file": "assets/Card-d1ac062a.js",
+    "file": "assets/Card-baa59264.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -110,7 +110,7 @@
     "src": "resources/js/Pages/Modals/Card.vue"
   },
   "resources/js/Pages/Modals/Column.vue": {
-    "file": "assets/Column-6efdd58c.js",
+    "file": "assets/Column-a053cba5.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -118,7 +118,7 @@
     "src": "resources/js/Pages/Modals/Column.vue"
   },
   "resources/js/Pages/Modals/Password.vue": {
-    "file": "assets/Password-0fe595cc.js",
+    "file": "assets/Password-ca0c27d7.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -126,7 +126,7 @@
     "src": "resources/js/Pages/Modals/Password.vue"
   },
   "resources/js/Pages/Modals/Profile.vue": {
-    "file": "assets/Profile-28587200.js",
+    "file": "assets/Profile-c2f27baf.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -134,11 +134,11 @@
     "src": "resources/js/Pages/Modals/Profile.vue"
   },
   "resources/js/Pages/Page.vue": {
-    "file": "assets/Page-031fc46f.js",
+    "file": "assets/Page-520893aa.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
-      "_showdown-efd0f6cf.js",
+      "_showdown-a742d2cb.js",
       "resources/js/Pages/Modals/Board.vue",
       "resources/js/Pages/Modals/Profile.vue",
       "resources/js/Pages/Modals/Password.vue"
@@ -147,7 +147,7 @@
     "src": "resources/js/Pages/Page.vue"
   },
   "resources/js/Pages/Show.vue": {
-    "file": "assets/Show-39ac9c6e.js",
+    "file": "assets/Show-fd2b9679.js",
     "imports": [
       "resources/js/Pages/Layout.vue",
       "resources/js/app.js",
@@ -159,12 +159,12 @@
     "src": "resources/js/Pages/Show.vue"
   },
   "resources/js/app.css": {
-    "file": "assets/app-dd70b9b0.css",
+    "file": "assets/app-5f7c40e7.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-dd70b9b0.css"
+      "assets/app-5f7c40e7.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/404.vue",
@@ -181,7 +181,7 @@
       "resources/js/Pages/Page.vue",
       "resources/js/Pages/Show.vue"
     ],
-    "file": "assets/app-14dbf5e0.js",
+    "file": "assets/app-b15d5a65.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
