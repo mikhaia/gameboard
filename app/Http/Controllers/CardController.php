@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Column;
 use App\Models\Card;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class CardController extends Controller
 {
@@ -41,6 +42,18 @@ class CardController extends Controller
 
         $card = Card::where('id', $id)->update($data);
         return redirect()->back()->with('success', 'Card saved successfully!');
+    }
+
+    public function destroy(Request $request, $id) {
+        $model = Card::find($id);
+        $board = $model->column->board;
+        if ($board->user_id) {
+            if ($model->cover) {
+                File::delete(public_path($model->cover));
+            }
+            $model->delete();
+            return ['success' => 'Card was deleted successfully!'];
+        }
     }
 
     public function todo(Request $request, $cardId) {

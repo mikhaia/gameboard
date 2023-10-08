@@ -196,7 +196,7 @@ function switchMode() {
                     <!-- <Card :card="card"></Card> -->
                     <div class="card cursor-pointer shadow-md drag-card" @click="openCardModal(card, editable)" draggable="true" :id="'card-'+card.id">
                         <img :src="card.cover" draggable="false"/>
-                        <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo, 'position-absolute': card.cover }" v-if="card.title">{{ card.title }}</h6>
+                        <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo, 'absolute': card.cover }" v-if="card.title">{{ card.title }}</h6>
                         <div v-if="card.description" class="description" v-html="toHtml(card.description)"></div>
                         <div v-if="card.todo"
                           class="checklist p-2 cursor-default"

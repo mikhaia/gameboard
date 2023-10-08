@@ -23,7 +23,7 @@ class Card extends Model
         'todo',
     ];
 
-    public function columns(): BelongsTo
+    public function column(): BelongsTo
     {
         return $this->belongsTo(Column::class, 'column_id', 'id');
     }

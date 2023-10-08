@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Column extends Model
@@ -23,5 +24,10 @@ class Column extends Model
     public function cards(): HasMany
     {
         return $this->hasMany(Card::class, 'column_id');
+    }
+
+    public function board(): BelongsTo
+    {
+        return $this->belongsTo(Board::class, 'board_id', 'id');
     }
 }

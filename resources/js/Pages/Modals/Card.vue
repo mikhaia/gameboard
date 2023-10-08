@@ -77,6 +77,14 @@
               form.cover = getMetaData(html, 'image');
           });
         }
+      },
+      remove() {
+        if (confirm('Are you sure to delete this card?')) {
+          axios.delete('/cards/'+data.value.id).then(response => {
+            Toast.show(response.data.success, 'success');
+            history.go()
+          });
+        }
       }
     }
   };
@@ -200,8 +208,11 @@ const todoExample =
                 :placeholder="todoExample"
                 @keydown="textareaKeys($event)"></textarea>
             </div>
-            <div v-if="!readonly">
+            <div v-if="!readonly" class="flex">
               <button type="submit" class="button w-full">Save</button>
+              <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
+                <i class="icon gg-trash"></i>
+              </button>
             </div>
           </div>
         </div>
