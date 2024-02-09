@@ -58,6 +58,16 @@
         reader.onload = () => {
           event.target.previousSibling.src = reader.result;
         }
+      },
+      remove() {
+        if (confirm('Are you sure to delete this board?')) {
+          form.delete('/boards/'+data.value.id, {
+            onSuccess: () => {
+              Toast.show('Board saved successfully', 'success');
+              this.close();
+            }
+          });
+        }
       }
     }
   };
@@ -121,8 +131,11 @@
               </div>
             </div>
           </div>
-          <div>
+          <div v-if="!readonly" class="flex">
             <button type="submit" class="button w-full">Save</button>
+            <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
+                <i class="icon gg-trash"></i>
+              </button>
           </div>
         </form>
       </div>

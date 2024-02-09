@@ -82,4 +82,19 @@ class BoardController extends Controller
         $msg = ($request->input('dark') ? 'Dark' : 'Light') . ' mode is on!';
         return ['success' => $msg];
     }
+
+    public function destroy(Request $request, $id) {
+        $model = Board::find($id);
+        if ($model->user_id) {
+            if ($model->icon) {
+                File::delete(public_path($model->icon));
+            }
+            if ($model->background) {
+                File::delete(public_path($model->background));
+            }
+            $model->delete();
+            return redirect()->route('index')->with('success', 'Board was deleted successfully!');
+        }
+        return redirect()->route('index')->with('error', 'Board does not exist');
+    }
 }
