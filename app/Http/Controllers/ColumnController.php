@@ -47,4 +47,22 @@ class ColumnController extends Controller
             Column::find($id)->update(['position' => $position]);
         }
     }
+
+    public function destroy(Request $request, $id) {
+        $model = Column::find($id);
+        $board = $model->board;
+        if ($board->user_id) {
+            foreach($model->cards as $card) {
+                if ($card->icon) {
+                    File::delete(public_path($card->icon));
+                }
+                if ($card->background) {
+                    File::delete(public_path($card->background));
+                }
+                $card->delete();
+            }
+            $model->delete();
+            return redirect()->route('boards.show', [$board->id])->with('success', 'Column was deleted successfully!');
+        }
+    }
 }

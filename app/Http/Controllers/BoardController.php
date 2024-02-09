@@ -92,6 +92,16 @@ class BoardController extends Controller
             if ($model->background) {
                 File::delete(public_path($model->background));
             }
+            foreach($model->columns as $column) {
+                foreach($column->cards as $card) {
+                    if ($card->cover) {
+                        File::delete(public_path($card->cover));
+                    }
+                    $card->delete();
+                }
+                $column->delete();
+            }
+
             $model->delete();
             return redirect()->route('index')->with('success', 'Board was deleted successfully!');
         }

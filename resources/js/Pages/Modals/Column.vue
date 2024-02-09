@@ -66,6 +66,16 @@
         reader.onload = () => {
           event.target.previousSibling.src = reader.result;
         }
+      },
+      remove() {
+        if (confirm('Are you sure to delete this column?')) {
+          form.delete('/columns/'+data.value.id, {
+            onSuccess: (response) => {
+              Toast.show(response.props.toast.success, 'success');
+              this.close();
+            }
+          });
+        }
       }
     }
   };
@@ -104,8 +114,11 @@
             </select>
             <label for="position">Position</label>
           </div>
-          <div>
+          <div v-if="!readonly" class="flex">
             <button type="submit" class="button w-full">Save</button>
+            <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
+                <i class="icon gg-trash"></i>
+              </button>
           </div>
         </form>
       </div>

@@ -62,8 +62,8 @@
       remove() {
         if (confirm('Are you sure to delete this board?')) {
           form.delete('/boards/'+data.value.id, {
-            onSuccess: () => {
-              Toast.show('Board saved successfully', 'success');
+            onSuccess: (response) => {
+              Toast.show(response.props.toast.success, 'success');
               this.close();
             }
           });
