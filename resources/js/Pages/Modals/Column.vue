@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-  import Toast from '../Inc/Toast.vue';
+//   import Toast from '../Inc/Toast.vue';
   let data = ref();
   let title = ref();
   let form = ref();
@@ -84,7 +84,7 @@
 </script>
 
 <script setup>
-// 
+//
 </script>
 
 <template>
@@ -117,7 +117,7 @@
           <div v-if="!readonly" class="flex">
             <button type="submit" class="button w-full">Save</button>
             <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
-                <i class="icon gg-trash"></i>
+                <span class="material-symbols-outlined icon">delete</span>
               </button>
           </div>
         </form>

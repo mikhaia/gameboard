@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-  import Toast from '../Inc/Toast.vue';
+//   import Toast from '../Inc/Toast.vue';
   let data = ref();
   let title = ref('Change password');
   let form = ref();

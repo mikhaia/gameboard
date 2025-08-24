@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-  import Toast from '../Inc/Toast.vue';
+//   import Toast from '../Inc/Toast.vue';
   let data = ref();
   let title = ref();
   let form = ref();
@@ -136,7 +136,7 @@ window.addEventListener('paste', event => {
       const img = getImage(url);
       axios(img).then(function(response) {
         if (response.data) {
-          form.cover = img; 
+          form.cover = img;
         }
       });
 
@@ -148,13 +148,13 @@ window.addEventListener('paste', event => {
 </script>
 
 <script setup>
-const todoExample = 
+const todoExample =
 `Example:
 - An undone task
 + Finished group
   + Finished item
 `;
-// 
+//
 </script>
 
 <template>
@@ -211,7 +211,7 @@ const todoExample =
             <div v-if="!readonly" class="flex">
               <button type="submit" class="button w-full">Save</button>
               <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
-                <i class="icon gg-trash"></i>
+                <span class="material-symbols-outlined icon">delete</span>
               </button>
             </div>
           </div>

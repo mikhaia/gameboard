@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-  import Toast from '../Inc/Toast.vue';
+//   import Toast from '../Inc/Toast.vue';
   let data = ref();
   let title = ref('Profile settigns');
   let form = ref();
@@ -80,7 +80,7 @@ window.addEventListener('paste', event => {
       const img = getImage(url);
       axios(img).then(function(response) {
         if (response.data) {
-          form.avatar = img; 
+          form.avatar = img;
         }
       });
 

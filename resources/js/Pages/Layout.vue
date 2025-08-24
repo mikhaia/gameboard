@@ -27,7 +27,7 @@ const openPasswordModal = () => {
       <nav class="sidenav">
         <li>
           <a @click="openModal({title: 'New Board'})" class="cursor-pointer" id="create-board">
-            <span class="icon"><i class="gg-add-r"></i></span>
+            <span class="material-symbols-outlined icon">add_circle</span>
             <span class="name">Create New Board</span>
           </a>
         </li>
@@ -42,18 +42,18 @@ const openPasswordModal = () => {
         </li>
         <li :class="{'active' : $page.component === 'Index' }">
           <Link href="/">
-            <span class="icon"><i class="gg-board"></i></span>
+            <span class="material-symbols-outlined icon">dashboard</span>
             <span class="name">Dashboard</span>
           </Link>
         </li>
       </nav>
     </aside>
-    
+
     <main class="relative main">
       <div class="user-panel">
         <div class="user-info">
           <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
-          <img v-else :src="'/data/avatar/avatar.jpg'" class="avatar">
+          <img v-else :src="'/img/avatar.png'" class="avatar">
           {{ page.props.user.name }}
           <Link href="/logout" class="exit">x</Link>
         </div>

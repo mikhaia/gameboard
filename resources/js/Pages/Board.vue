@@ -168,7 +168,7 @@ function switchMode() {
         :style="[board?.background ? { backgroundImage: 'url('+board?.background+')'} : {}]">
         <div class="header">
           <a class="cursor-pointer icon" @click="openBoardModal(board)">
-            <span><i class="gg-pen"></i></span>
+            <span class="material-symbols-outlined">edit</span>
             <img :src="board?.icon">
           </a>
           <h1>{{ board.title }}</h1>
