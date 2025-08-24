@@ -27,7 +27,7 @@ const openPasswordModal = () => {
       <nav class="sidenav">
         <li>
           <a @click="openModal({title: 'New Board'})" class="cursor-pointer" id="create-board">
-            <span class="icon"><i class="gg-add-r"></i></span>
+            <span class="material-symbols-outlined icon">add_circle</span>
             <span class="name">Create New Board</span>
           </a>
         </li>
@@ -42,7 +42,7 @@ const openPasswordModal = () => {
         </li>
         <li :class="{'active' : $page.component === 'Index' }">
           <Link href="/">
-            <span class="icon"><i class="gg-board"></i></span>
+            <span class="material-symbols-outlined icon">dashboard</span>
             <span class="name">Dashboard</span>
           </Link>
         </li>

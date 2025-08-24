@@ -93,7 +93,7 @@
             <label for="title">Title</label>
           </div>
           <a class="cutter" @click="displayDetails = !displayDetails" :class="{expand: displayDetails}">
-            <span class="icon">⏬</span> Details <span class="icon">⏬</span>
+            <span class="material-symbols-outlined icon">expand_more</span> Details <span class="material-symbols-outlined icon">expand_more</span>
           </a>
           <div v-show="displayDetails">
             <div class="form-file py-2.5 form-icon">
@@ -134,7 +134,7 @@
           <div v-if="!readonly" class="flex">
             <button type="submit" class="button w-full">Save</button>
             <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
-                <i class="icon gg-trash"></i>
+                <span class="material-symbols-outlined icon">delete</span>
               </button>
           </div>
         </form>

@@ -211,7 +211,7 @@ const todoExample =
             <div v-if="!readonly" class="flex">
               <button type="submit" class="button w-full">Save</button>
               <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
-                <i class="icon gg-trash"></i>
+                <span class="material-symbols-outlined icon">delete</span>
               </button>
             </div>
           </div>
