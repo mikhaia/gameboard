@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // TODO: check after() in MariaDB
-            $table->text('avatar')->default('/data/avatar/avatar.jpg')->after('email');
-            $table->string('steam_id', 50)->nullable()->after('email');
-            $table->string('google_id', 50)->nullable()->after('email');
+            $table->string('avatar', 255)
+                ->default('/data/avatar/avatar.jpg')
+                ->after('email');
+
+            $table->string('steam_id', 50)->nullable()->after('avatar');
+            $table->string('google_id', 50)->nullable()->after('steam_id');
         });
     }
 
