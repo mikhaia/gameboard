@@ -33,10 +33,12 @@ const openPasswordModal = () => {
         </li>
         <li :class="{'active' : $page.url.startsWith('/boards/'+item.id) }"
           v-for="item in page.props.boards">
-          <button class="edit-board-btn" @click="openModal(item)">⚙️</button>
+          <button class="edit-board-btn" @click="openModal(item)">
+            <span class="material-symbols-outlined">settings</span>
+          </button>
           <Link :href="'/boards/'+item.id">
             <img v-if="item.icon" :src="item.icon" class="icon" />
-            <img v-else :src="'/data/icon/0.png'" class="icon"/>
+            <img v-else :src="'/img/board.png'" class="icon"/>
             <span class="name">{{ item.title }}</span>
           </Link>
         </li>
