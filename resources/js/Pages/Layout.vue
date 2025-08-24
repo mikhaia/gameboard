@@ -48,12 +48,12 @@ const openPasswordModal = () => {
         </li>
       </nav>
     </aside>
-    
+
     <main class="relative main">
       <div class="user-panel">
         <div class="user-info">
           <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
-          <img v-else :src="'/data/avatar/avatar.jpg'" class="avatar">
+          <img v-else :src="'/img/avatar.png'" class="avatar">
           {{ page.props.user.name }}
           <Link href="/logout" class="exit">x</Link>
         </div>

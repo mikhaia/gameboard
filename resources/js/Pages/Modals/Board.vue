@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm } from '@inertiajs/vue3';
-  import Toast from '../Inc/Toast.vue';
+//   import Toast from '../Inc/Toast.vue';
   let data = ref();
   let title = ref();
   let displayDetails = ref();
@@ -76,7 +76,7 @@
 </script>
 
 <script setup>
-// 
+//
 </script>
 
 <template>
