@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar', 255)
-                ->default('/data/avatar/avatar.jpg')
+                ->default('')
                 ->after('email');
 
             $table->string('steam_id', 50)->nullable()->after('avatar');

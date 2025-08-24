@@ -2,18 +2,16 @@ import './bootstrap';
 
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import '../css/tailwind.css';
 
-import Toast from './Pages/Inc/Toast.vue';
+import { defineAsyncComponent } from 'vue'
+const Toast = defineAsyncComponent(() => import('@/Pages/Inc/Toast.vue'))
 
 createInertiaApp({
-  resolve: name => {
-    // const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-    // return pages[`./Pages/${name}.vue`]
-    // Lazyload
-    const pages = import.meta.glob('./Pages/**/*.vue')
-    return pages[`./Pages/${name}.vue`]()
-  },
+    resolve: (name) => {
+        return resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue'));
+    },
   setup({ el, App, props, plugin }) {
     const app = createApp({ render: () => h(App, props) })
       .mixin({ components: {Toast}})
