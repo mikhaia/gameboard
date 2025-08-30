@@ -9,11 +9,11 @@ function createNewBoard() {
   document.getElementById('create-board').click();
 }
 </script>
- 
+
 <template>
   <Layout>
     <Head title="Welcome page" />
-    <div class="dashboard" :style="{backgroundImage: `url(${props.background})`}">
+    <div class="dashboard" :style="props.background ? {backgroundImage: `url(${props.background})`} : {}">
       <h3>Your boards</h3>
       <ul class="text-center">
         <li v-for="item in page.props.boards">

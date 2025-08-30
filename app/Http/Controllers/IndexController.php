@@ -8,12 +8,12 @@ class IndexController extends Controller
 {
     public function index()
     {
-      $path = 'data/motive/';
-      $files = File::files(public_path($path));
-      $index = array_rand($files);
-      $background = asset($path.$files[$index]->getFilename());
+    //   $path = 'data/motive/';
+    //   $files = File::files(public_path($path));
+    //   $index = array_rand($files);
+    //   $background = asset($path.$files[$index]->getFilename());
       return Inertia::render('Index', [
-        'background' => $background
+        'background' => $background ?? null
       ]);
     }
 

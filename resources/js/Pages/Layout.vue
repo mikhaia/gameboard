@@ -33,7 +33,7 @@ const openPasswordModal = () => {
         </li>
         <li :class="{'active' : $page.url.startsWith('/boards/'+item.id) }"
           v-for="item in page.props.boards">
-          <button class="edit-board-btn" @click="openModal(item)">
+          <button class="edit-board-btn text-white" @click="openModal(item)">
             <span class="material-symbols-outlined">settings</span>
           </button>
           <Link :href="'/boards/'+item.id">
