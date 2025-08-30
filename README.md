@@ -6,6 +6,7 @@
 - Tailwind
 - Vite 3
 - Stylus
+- Collision for rich console exception handling
 
 # ⭐ Installation
 
