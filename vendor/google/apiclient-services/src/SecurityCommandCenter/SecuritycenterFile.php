@@ -17,16 +17,21 @@
 
 namespace Google\Service\SecurityCommandCenter;
 
-class SecuritycenterFile extends \Google\Model
+class SecuritycenterFile extends \Google\Collection
 {
+  protected $collection_key = 'operations';
   /**
    * @var string
    */
   public $contents;
+  protected $diskPathType = DiskPath::class;
+  protected $diskPathDataType = '';
   /**
    * @var string
    */
   public $hashedSize;
+  protected $operationsType = FileOperation::class;
+  protected $operationsDataType = 'array';
   /**
    * @var bool
    */
@@ -59,6 +64,20 @@ class SecuritycenterFile extends \Google\Model
     return $this->contents;
   }
   /**
+   * @param DiskPath
+   */
+  public function setDiskPath(DiskPath $diskPath)
+  {
+    $this->diskPath = $diskPath;
+  }
+  /**
+   * @return DiskPath
+   */
+  public function getDiskPath()
+  {
+    return $this->diskPath;
+  }
+  /**
    * @param string
    */
   public function setHashedSize($hashedSize)
@@ -71,6 +90,20 @@ class SecuritycenterFile extends \Google\Model
   public function getHashedSize()
   {
     return $this->hashedSize;
+  }
+  /**
+   * @param FileOperation[]
+   */
+  public function setOperations($operations)
+  {
+    $this->operations = $operations;
+  }
+  /**
+   * @return FileOperation[]
+   */
+  public function getOperations()
+  {
+    return $this->operations;
   }
   /**
    * @param bool

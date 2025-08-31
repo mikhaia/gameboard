@@ -19,13 +19,15 @@ namespace Google\Service\CloudRun;
 
 class GoogleCloudRunV2Service extends \Google\Collection
 {
-  protected $collection_key = 'trafficStatuses';
+  protected $collection_key = 'urls';
   /**
    * @var string[]
    */
   public $annotations;
   protected $binaryAuthorizationType = GoogleCloudRunV2BinaryAuthorization::class;
   protected $binaryAuthorizationDataType = '';
+  protected $buildConfigType = GoogleCloudRunV2BuildConfig::class;
+  protected $buildConfigDataType = '';
   /**
    * @var string
    */
@@ -49,6 +51,10 @@ class GoogleCloudRunV2Service extends \Google\Collection
    */
   public $customAudiences;
   /**
+   * @var bool
+   */
+  public $defaultUriDisabled;
+  /**
    * @var string
    */
   public $deleteTime;
@@ -69,9 +75,17 @@ class GoogleCloudRunV2Service extends \Google\Collection
    */
   public $generation;
   /**
+   * @var bool
+   */
+  public $iapEnabled;
+  /**
    * @var string
    */
   public $ingress;
+  /**
+   * @var bool
+   */
+  public $invokerIamDisabled;
   /**
    * @var string[]
    */
@@ -108,18 +122,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
    * @var bool
    */
   public $satisfiesPzs;
+  protected $scalingType = GoogleCloudRunV2ServiceScaling::class;
+  protected $scalingDataType = '';
   protected $templateType = GoogleCloudRunV2RevisionTemplate::class;
   protected $templateDataType = '';
   protected $terminalConditionType = GoogleCloudRunV2Condition::class;
   protected $terminalConditionDataType = '';
+  /**
+   * @var bool
+   */
+  public $threatDetectionEnabled;
   protected $trafficType = GoogleCloudRunV2TrafficTarget::class;
   protected $trafficDataType = 'array';
   protected $trafficStatusesType = GoogleCloudRunV2TrafficTargetStatus::class;
   protected $trafficStatusesDataType = 'array';
-  /**
-   * @var string
-   */
-  public $trafficTagsCleanupThreshold;
   /**
    * @var string
    */
@@ -132,6 +148,10 @@ class GoogleCloudRunV2Service extends \Google\Collection
    * @var string
    */
   public $uri;
+  /**
+   * @var string[]
+   */
+  public $urls;
 
   /**
    * @param string[]
@@ -160,6 +180,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
   public function getBinaryAuthorization()
   {
     return $this->binaryAuthorization;
+  }
+  /**
+   * @param GoogleCloudRunV2BuildConfig
+   */
+  public function setBuildConfig(GoogleCloudRunV2BuildConfig $buildConfig)
+  {
+    $this->buildConfig = $buildConfig;
+  }
+  /**
+   * @return GoogleCloudRunV2BuildConfig
+   */
+  public function getBuildConfig()
+  {
+    return $this->buildConfig;
   }
   /**
    * @param string
@@ -246,6 +280,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
     return $this->customAudiences;
   }
   /**
+   * @param bool
+   */
+  public function setDefaultUriDisabled($defaultUriDisabled)
+  {
+    $this->defaultUriDisabled = $defaultUriDisabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getDefaultUriDisabled()
+  {
+    return $this->defaultUriDisabled;
+  }
+  /**
    * @param string
    */
   public function setDeleteTime($deleteTime)
@@ -316,6 +364,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
     return $this->generation;
   }
   /**
+   * @param bool
+   */
+  public function setIapEnabled($iapEnabled)
+  {
+    $this->iapEnabled = $iapEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getIapEnabled()
+  {
+    return $this->iapEnabled;
+  }
+  /**
    * @param string
    */
   public function setIngress($ingress)
@@ -328,6 +390,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
   public function getIngress()
   {
     return $this->ingress;
+  }
+  /**
+   * @param bool
+   */
+  public function setInvokerIamDisabled($invokerIamDisabled)
+  {
+    $this->invokerIamDisabled = $invokerIamDisabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getInvokerIamDisabled()
+  {
+    return $this->invokerIamDisabled;
   }
   /**
    * @param string[]
@@ -456,6 +532,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
     return $this->satisfiesPzs;
   }
   /**
+   * @param GoogleCloudRunV2ServiceScaling
+   */
+  public function setScaling(GoogleCloudRunV2ServiceScaling $scaling)
+  {
+    $this->scaling = $scaling;
+  }
+  /**
+   * @return GoogleCloudRunV2ServiceScaling
+   */
+  public function getScaling()
+  {
+    return $this->scaling;
+  }
+  /**
    * @param GoogleCloudRunV2RevisionTemplate
    */
   public function setTemplate(GoogleCloudRunV2RevisionTemplate $template)
@@ -484,6 +574,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
     return $this->terminalCondition;
   }
   /**
+   * @param bool
+   */
+  public function setThreatDetectionEnabled($threatDetectionEnabled)
+  {
+    $this->threatDetectionEnabled = $threatDetectionEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getThreatDetectionEnabled()
+  {
+    return $this->threatDetectionEnabled;
+  }
+  /**
    * @param GoogleCloudRunV2TrafficTarget[]
    */
   public function setTraffic($traffic)
@@ -510,20 +614,6 @@ class GoogleCloudRunV2Service extends \Google\Collection
   public function getTrafficStatuses()
   {
     return $this->trafficStatuses;
-  }
-  /**
-   * @param string
-   */
-  public function setTrafficTagsCleanupThreshold($trafficTagsCleanupThreshold)
-  {
-    $this->trafficTagsCleanupThreshold = $trafficTagsCleanupThreshold;
-  }
-  /**
-   * @return string
-   */
-  public function getTrafficTagsCleanupThreshold()
-  {
-    return $this->trafficTagsCleanupThreshold;
   }
   /**
    * @param string
@@ -566,6 +656,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
   public function getUri()
   {
     return $this->uri;
+  }
+  /**
+   * @param string[]
+   */
+  public function setUrls($urls)
+  {
+    $this->urls = $urls;
+  }
+  /**
+   * @return string[]
+   */
+  public function getUrls()
+  {
+    return $this->urls;
   }
 }
 

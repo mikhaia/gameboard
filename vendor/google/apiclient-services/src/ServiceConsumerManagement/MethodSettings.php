@@ -17,8 +17,15 @@
 
 namespace Google\Service\ServiceConsumerManagement;
 
-class MethodSettings extends \Google\Model
+class MethodSettings extends \Google\Collection
 {
+  protected $collection_key = 'autoPopulatedFields';
+  /**
+   * @var string[]
+   */
+  public $autoPopulatedFields;
+  protected $batchingType = BatchingConfigProto::class;
+  protected $batchingDataType = '';
   protected $longRunningType = LongRunning::class;
   protected $longRunningDataType = '';
   /**
@@ -26,6 +33,34 @@ class MethodSettings extends \Google\Model
    */
   public $selector;
 
+  /**
+   * @param string[]
+   */
+  public function setAutoPopulatedFields($autoPopulatedFields)
+  {
+    $this->autoPopulatedFields = $autoPopulatedFields;
+  }
+  /**
+   * @return string[]
+   */
+  public function getAutoPopulatedFields()
+  {
+    return $this->autoPopulatedFields;
+  }
+  /**
+   * @param BatchingConfigProto
+   */
+  public function setBatching(BatchingConfigProto $batching)
+  {
+    $this->batching = $batching;
+  }
+  /**
+   * @return BatchingConfigProto
+   */
+  public function getBatching()
+  {
+    return $this->batching;
+  }
   /**
    * @param LongRunning
    */

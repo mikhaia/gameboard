@@ -24,16 +24,24 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $accessibilityOptionsDataType = '';
   protected $addressComponentsType = GoogleMapsPlacesV1PlaceAddressComponent::class;
   protected $addressComponentsDataType = 'array';
+  protected $addressDescriptorType = GoogleMapsPlacesV1AddressDescriptor::class;
+  protected $addressDescriptorDataType = '';
   /**
    * @var string
    */
   public $adrFormatAddress;
+  /**
+   * @var bool
+   */
+  public $allowsDogs;
   protected $attributionsType = GoogleMapsPlacesV1PlaceAttribution::class;
   protected $attributionsDataType = 'array';
   /**
    * @var string
    */
   public $businessStatus;
+  protected $containingPlacesType = GoogleMapsPlacesV1PlaceContainingPlace::class;
+  protected $containingPlacesDataType = 'array';
   /**
    * @var bool
    */
@@ -54,10 +62,32 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   protected $displayNameDataType = '';
   protected $editorialSummaryType = GoogleTypeLocalizedText::class;
   protected $editorialSummaryDataType = '';
+  protected $evChargeAmenitySummaryType = GoogleMapsPlacesV1PlaceEvChargeAmenitySummary::class;
+  protected $evChargeAmenitySummaryDataType = '';
+  protected $evChargeOptionsType = GoogleMapsPlacesV1EVChargeOptions::class;
+  protected $evChargeOptionsDataType = '';
   /**
    * @var string
    */
   public $formattedAddress;
+  protected $fuelOptionsType = GoogleMapsPlacesV1FuelOptions::class;
+  protected $fuelOptionsDataType = '';
+  protected $generativeSummaryType = GoogleMapsPlacesV1PlaceGenerativeSummary::class;
+  protected $generativeSummaryDataType = '';
+  /**
+   * @var bool
+   */
+  public $goodForChildren;
+  /**
+   * @var bool
+   */
+  public $goodForGroups;
+  /**
+   * @var bool
+   */
+  public $goodForWatchingSports;
+  protected $googleMapsLinksType = GoogleMapsPlacesV1PlaceGoogleMapsLinks::class;
+  protected $googleMapsLinksDataType = '';
   /**
    * @var string
    */
@@ -78,8 +108,16 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
    * @var string
    */
   public $internationalPhoneNumber;
+  /**
+   * @var bool
+   */
+  public $liveMusic;
   protected $locationType = GoogleTypeLatLng::class;
   protected $locationDataType = '';
+  /**
+   * @var bool
+   */
+  public $menuForChildren;
   /**
    * @var string
    */
@@ -88,12 +126,38 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
    * @var string
    */
   public $nationalPhoneNumber;
+  protected $neighborhoodSummaryType = GoogleMapsPlacesV1PlaceNeighborhoodSummary::class;
+  protected $neighborhoodSummaryDataType = '';
+  /**
+   * @var bool
+   */
+  public $outdoorSeating;
+  protected $parkingOptionsType = GoogleMapsPlacesV1PlaceParkingOptions::class;
+  protected $parkingOptionsDataType = '';
+  protected $paymentOptionsType = GoogleMapsPlacesV1PlacePaymentOptions::class;
+  protected $paymentOptionsDataType = '';
+  protected $photosType = GoogleMapsPlacesV1Photo::class;
+  protected $photosDataType = 'array';
   protected $plusCodeType = GoogleMapsPlacesV1PlacePlusCode::class;
   protected $plusCodeDataType = '';
+  protected $postalAddressType = GoogleTypePostalAddress::class;
+  protected $postalAddressDataType = '';
   /**
    * @var string
    */
   public $priceLevel;
+  protected $priceRangeType = GoogleMapsPlacesV1PriceRange::class;
+  protected $priceRangeDataType = '';
+  /**
+   * @var string
+   */
+  public $primaryType;
+  protected $primaryTypeDisplayNameType = GoogleTypeLocalizedText::class;
+  protected $primaryTypeDisplayNameDataType = '';
+  /**
+   * @var bool
+   */
+  public $pureServiceAreaBusiness;
   public $rating;
   protected $regularOpeningHoursType = GoogleMapsPlacesV1PlaceOpeningHours::class;
   protected $regularOpeningHoursDataType = '';
@@ -103,6 +167,12 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
    * @var bool
    */
   public $reservable;
+  /**
+   * @var bool
+   */
+  public $restroom;
+  protected $reviewSummaryType = GoogleMapsPlacesV1PlaceReviewSummary::class;
+  protected $reviewSummaryDataType = '';
   protected $reviewsType = GoogleMapsPlacesV1Review::class;
   protected $reviewsDataType = 'array';
   /**
@@ -120,6 +190,18 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   /**
    * @var bool
    */
+  public $servesCocktails;
+  /**
+   * @var bool
+   */
+  public $servesCoffee;
+  /**
+   * @var bool
+   */
+  public $servesDessert;
+  /**
+   * @var bool
+   */
   public $servesDinner;
   /**
    * @var bool
@@ -134,9 +216,17 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
    */
   public $servesWine;
   /**
+   * @var string
+   */
+  public $shortFormattedAddress;
+  protected $subDestinationsType = GoogleMapsPlacesV1PlaceSubDestination::class;
+  protected $subDestinationsDataType = 'array';
+  /**
    * @var bool
    */
   public $takeout;
+  protected $timeZoneType = GoogleTypeTimeZone::class;
+  protected $timeZoneDataType = '';
   /**
    * @var string[]
    */
@@ -185,6 +275,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->addressComponents;
   }
   /**
+   * @param GoogleMapsPlacesV1AddressDescriptor
+   */
+  public function setAddressDescriptor(GoogleMapsPlacesV1AddressDescriptor $addressDescriptor)
+  {
+    $this->addressDescriptor = $addressDescriptor;
+  }
+  /**
+   * @return GoogleMapsPlacesV1AddressDescriptor
+   */
+  public function getAddressDescriptor()
+  {
+    return $this->addressDescriptor;
+  }
+  /**
    * @param string
    */
   public function setAdrFormatAddress($adrFormatAddress)
@@ -197,6 +301,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getAdrFormatAddress()
   {
     return $this->adrFormatAddress;
+  }
+  /**
+   * @param bool
+   */
+  public function setAllowsDogs($allowsDogs)
+  {
+    $this->allowsDogs = $allowsDogs;
+  }
+  /**
+   * @return bool
+   */
+  public function getAllowsDogs()
+  {
+    return $this->allowsDogs;
   }
   /**
    * @param GoogleMapsPlacesV1PlaceAttribution[]
@@ -225,6 +343,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getBusinessStatus()
   {
     return $this->businessStatus;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceContainingPlace[]
+   */
+  public function setContainingPlaces($containingPlaces)
+  {
+    $this->containingPlaces = $containingPlaces;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceContainingPlace[]
+   */
+  public function getContainingPlaces()
+  {
+    return $this->containingPlaces;
   }
   /**
    * @param bool
@@ -325,6 +457,34 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->editorialSummary;
   }
   /**
+   * @param GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
+   */
+  public function setEvChargeAmenitySummary(GoogleMapsPlacesV1PlaceEvChargeAmenitySummary $evChargeAmenitySummary)
+  {
+    $this->evChargeAmenitySummary = $evChargeAmenitySummary;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
+   */
+  public function getEvChargeAmenitySummary()
+  {
+    return $this->evChargeAmenitySummary;
+  }
+  /**
+   * @param GoogleMapsPlacesV1EVChargeOptions
+   */
+  public function setEvChargeOptions(GoogleMapsPlacesV1EVChargeOptions $evChargeOptions)
+  {
+    $this->evChargeOptions = $evChargeOptions;
+  }
+  /**
+   * @return GoogleMapsPlacesV1EVChargeOptions
+   */
+  public function getEvChargeOptions()
+  {
+    return $this->evChargeOptions;
+  }
+  /**
    * @param string
    */
   public function setFormattedAddress($formattedAddress)
@@ -337,6 +497,90 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getFormattedAddress()
   {
     return $this->formattedAddress;
+  }
+  /**
+   * @param GoogleMapsPlacesV1FuelOptions
+   */
+  public function setFuelOptions(GoogleMapsPlacesV1FuelOptions $fuelOptions)
+  {
+    $this->fuelOptions = $fuelOptions;
+  }
+  /**
+   * @return GoogleMapsPlacesV1FuelOptions
+   */
+  public function getFuelOptions()
+  {
+    return $this->fuelOptions;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceGenerativeSummary
+   */
+  public function setGenerativeSummary(GoogleMapsPlacesV1PlaceGenerativeSummary $generativeSummary)
+  {
+    $this->generativeSummary = $generativeSummary;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceGenerativeSummary
+   */
+  public function getGenerativeSummary()
+  {
+    return $this->generativeSummary;
+  }
+  /**
+   * @param bool
+   */
+  public function setGoodForChildren($goodForChildren)
+  {
+    $this->goodForChildren = $goodForChildren;
+  }
+  /**
+   * @return bool
+   */
+  public function getGoodForChildren()
+  {
+    return $this->goodForChildren;
+  }
+  /**
+   * @param bool
+   */
+  public function setGoodForGroups($goodForGroups)
+  {
+    $this->goodForGroups = $goodForGroups;
+  }
+  /**
+   * @return bool
+   */
+  public function getGoodForGroups()
+  {
+    return $this->goodForGroups;
+  }
+  /**
+   * @param bool
+   */
+  public function setGoodForWatchingSports($goodForWatchingSports)
+  {
+    $this->goodForWatchingSports = $goodForWatchingSports;
+  }
+  /**
+   * @return bool
+   */
+  public function getGoodForWatchingSports()
+  {
+    return $this->goodForWatchingSports;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceGoogleMapsLinks
+   */
+  public function setGoogleMapsLinks(GoogleMapsPlacesV1PlaceGoogleMapsLinks $googleMapsLinks)
+  {
+    $this->googleMapsLinks = $googleMapsLinks;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceGoogleMapsLinks
+   */
+  public function getGoogleMapsLinks()
+  {
+    return $this->googleMapsLinks;
   }
   /**
    * @param string
@@ -409,6 +653,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->internationalPhoneNumber;
   }
   /**
+   * @param bool
+   */
+  public function setLiveMusic($liveMusic)
+  {
+    $this->liveMusic = $liveMusic;
+  }
+  /**
+   * @return bool
+   */
+  public function getLiveMusic()
+  {
+    return $this->liveMusic;
+  }
+  /**
    * @param GoogleTypeLatLng
    */
   public function setLocation(GoogleTypeLatLng $location)
@@ -421,6 +679,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getLocation()
   {
     return $this->location;
+  }
+  /**
+   * @param bool
+   */
+  public function setMenuForChildren($menuForChildren)
+  {
+    $this->menuForChildren = $menuForChildren;
+  }
+  /**
+   * @return bool
+   */
+  public function getMenuForChildren()
+  {
+    return $this->menuForChildren;
   }
   /**
    * @param string
@@ -451,6 +723,76 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->nationalPhoneNumber;
   }
   /**
+   * @param GoogleMapsPlacesV1PlaceNeighborhoodSummary
+   */
+  public function setNeighborhoodSummary(GoogleMapsPlacesV1PlaceNeighborhoodSummary $neighborhoodSummary)
+  {
+    $this->neighborhoodSummary = $neighborhoodSummary;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceNeighborhoodSummary
+   */
+  public function getNeighborhoodSummary()
+  {
+    return $this->neighborhoodSummary;
+  }
+  /**
+   * @param bool
+   */
+  public function setOutdoorSeating($outdoorSeating)
+  {
+    $this->outdoorSeating = $outdoorSeating;
+  }
+  /**
+   * @return bool
+   */
+  public function getOutdoorSeating()
+  {
+    return $this->outdoorSeating;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceParkingOptions
+   */
+  public function setParkingOptions(GoogleMapsPlacesV1PlaceParkingOptions $parkingOptions)
+  {
+    $this->parkingOptions = $parkingOptions;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceParkingOptions
+   */
+  public function getParkingOptions()
+  {
+    return $this->parkingOptions;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlacePaymentOptions
+   */
+  public function setPaymentOptions(GoogleMapsPlacesV1PlacePaymentOptions $paymentOptions)
+  {
+    $this->paymentOptions = $paymentOptions;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlacePaymentOptions
+   */
+  public function getPaymentOptions()
+  {
+    return $this->paymentOptions;
+  }
+  /**
+   * @param GoogleMapsPlacesV1Photo[]
+   */
+  public function setPhotos($photos)
+  {
+    $this->photos = $photos;
+  }
+  /**
+   * @return GoogleMapsPlacesV1Photo[]
+   */
+  public function getPhotos()
+  {
+    return $this->photos;
+  }
+  /**
    * @param GoogleMapsPlacesV1PlacePlusCode
    */
   public function setPlusCode(GoogleMapsPlacesV1PlacePlusCode $plusCode)
@@ -465,6 +807,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->plusCode;
   }
   /**
+   * @param GoogleTypePostalAddress
+   */
+  public function setPostalAddress(GoogleTypePostalAddress $postalAddress)
+  {
+    $this->postalAddress = $postalAddress;
+  }
+  /**
+   * @return GoogleTypePostalAddress
+   */
+  public function getPostalAddress()
+  {
+    return $this->postalAddress;
+  }
+  /**
    * @param string
    */
   public function setPriceLevel($priceLevel)
@@ -477,6 +833,62 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getPriceLevel()
   {
     return $this->priceLevel;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PriceRange
+   */
+  public function setPriceRange(GoogleMapsPlacesV1PriceRange $priceRange)
+  {
+    $this->priceRange = $priceRange;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PriceRange
+   */
+  public function getPriceRange()
+  {
+    return $this->priceRange;
+  }
+  /**
+   * @param string
+   */
+  public function setPrimaryType($primaryType)
+  {
+    $this->primaryType = $primaryType;
+  }
+  /**
+   * @return string
+   */
+  public function getPrimaryType()
+  {
+    return $this->primaryType;
+  }
+  /**
+   * @param GoogleTypeLocalizedText
+   */
+  public function setPrimaryTypeDisplayName(GoogleTypeLocalizedText $primaryTypeDisplayName)
+  {
+    $this->primaryTypeDisplayName = $primaryTypeDisplayName;
+  }
+  /**
+   * @return GoogleTypeLocalizedText
+   */
+  public function getPrimaryTypeDisplayName()
+  {
+    return $this->primaryTypeDisplayName;
+  }
+  /**
+   * @param bool
+   */
+  public function setPureServiceAreaBusiness($pureServiceAreaBusiness)
+  {
+    $this->pureServiceAreaBusiness = $pureServiceAreaBusiness;
+  }
+  /**
+   * @return bool
+   */
+  public function getPureServiceAreaBusiness()
+  {
+    return $this->pureServiceAreaBusiness;
   }
   public function setRating($rating)
   {
@@ -527,6 +939,34 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getReservable()
   {
     return $this->reservable;
+  }
+  /**
+   * @param bool
+   */
+  public function setRestroom($restroom)
+  {
+    $this->restroom = $restroom;
+  }
+  /**
+   * @return bool
+   */
+  public function getRestroom()
+  {
+    return $this->restroom;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceReviewSummary
+   */
+  public function setReviewSummary(GoogleMapsPlacesV1PlaceReviewSummary $reviewSummary)
+  {
+    $this->reviewSummary = $reviewSummary;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceReviewSummary
+   */
+  public function getReviewSummary()
+  {
+    return $this->reviewSummary;
   }
   /**
    * @param GoogleMapsPlacesV1Review[]
@@ -587,6 +1027,48 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   /**
    * @param bool
    */
+  public function setServesCocktails($servesCocktails)
+  {
+    $this->servesCocktails = $servesCocktails;
+  }
+  /**
+   * @return bool
+   */
+  public function getServesCocktails()
+  {
+    return $this->servesCocktails;
+  }
+  /**
+   * @param bool
+   */
+  public function setServesCoffee($servesCoffee)
+  {
+    $this->servesCoffee = $servesCoffee;
+  }
+  /**
+   * @return bool
+   */
+  public function getServesCoffee()
+  {
+    return $this->servesCoffee;
+  }
+  /**
+   * @param bool
+   */
+  public function setServesDessert($servesDessert)
+  {
+    $this->servesDessert = $servesDessert;
+  }
+  /**
+   * @return bool
+   */
+  public function getServesDessert()
+  {
+    return $this->servesDessert;
+  }
+  /**
+   * @param bool
+   */
   public function setServesDinner($servesDinner)
   {
     $this->servesDinner = $servesDinner;
@@ -641,6 +1123,34 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
     return $this->servesWine;
   }
   /**
+   * @param string
+   */
+  public function setShortFormattedAddress($shortFormattedAddress)
+  {
+    $this->shortFormattedAddress = $shortFormattedAddress;
+  }
+  /**
+   * @return string
+   */
+  public function getShortFormattedAddress()
+  {
+    return $this->shortFormattedAddress;
+  }
+  /**
+   * @param GoogleMapsPlacesV1PlaceSubDestination[]
+   */
+  public function setSubDestinations($subDestinations)
+  {
+    $this->subDestinations = $subDestinations;
+  }
+  /**
+   * @return GoogleMapsPlacesV1PlaceSubDestination[]
+   */
+  public function getSubDestinations()
+  {
+    return $this->subDestinations;
+  }
+  /**
    * @param bool
    */
   public function setTakeout($takeout)
@@ -653,6 +1163,20 @@ class GoogleMapsPlacesV1Place extends \Google\Collection
   public function getTakeout()
   {
     return $this->takeout;
+  }
+  /**
+   * @param GoogleTypeTimeZone
+   */
+  public function setTimeZone(GoogleTypeTimeZone $timeZone)
+  {
+    $this->timeZone = $timeZone;
+  }
+  /**
+   * @return GoogleTypeTimeZone
+   */
+  public function getTimeZone()
+  {
+    return $this->timeZone;
   }
   /**
    * @param string[]

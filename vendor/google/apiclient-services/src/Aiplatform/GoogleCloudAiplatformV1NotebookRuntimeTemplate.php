@@ -17,8 +17,9 @@
 
 namespace Google\Service\Aiplatform;
 
-class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
+class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Collection
 {
+  protected $collection_key = 'networkTags';
   /**
    * @var string
    */
@@ -33,6 +34,8 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
    * @var string
    */
   public $displayName;
+  protected $encryptionSpecType = GoogleCloudAiplatformV1EncryptionSpec::class;
+  protected $encryptionSpecDataType = '';
   /**
    * @var string
    */
@@ -58,9 +61,23 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
   protected $networkSpecType = GoogleCloudAiplatformV1NetworkSpec::class;
   protected $networkSpecDataType = '';
   /**
+   * @var string[]
+   */
+  public $networkTags;
+  /**
+   * @var string
+   */
+  public $notebookRuntimeType;
+  protected $reservationAffinityType = GoogleCloudAiplatformV1NotebookReservationAffinity::class;
+  protected $reservationAffinityDataType = '';
+  /**
    * @var string
    */
   public $serviceAccount;
+  protected $shieldedVmConfigType = GoogleCloudAiplatformV1ShieldedVmConfig::class;
+  protected $shieldedVmConfigDataType = '';
+  protected $softwareConfigType = GoogleCloudAiplatformV1NotebookSoftwareConfig::class;
+  protected $softwareConfigDataType = '';
   /**
    * @var string
    */
@@ -121,6 +138,20 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1EncryptionSpec
+   */
+  public function setEncryptionSpec(GoogleCloudAiplatformV1EncryptionSpec $encryptionSpec)
+  {
+    $this->encryptionSpec = $encryptionSpec;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1EncryptionSpec
+   */
+  public function getEncryptionSpec()
+  {
+    return $this->encryptionSpec;
   }
   /**
    * @param string
@@ -235,6 +266,48 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
     return $this->networkSpec;
   }
   /**
+   * @param string[]
+   */
+  public function setNetworkTags($networkTags)
+  {
+    $this->networkTags = $networkTags;
+  }
+  /**
+   * @return string[]
+   */
+  public function getNetworkTags()
+  {
+    return $this->networkTags;
+  }
+  /**
+   * @param string
+   */
+  public function setNotebookRuntimeType($notebookRuntimeType)
+  {
+    $this->notebookRuntimeType = $notebookRuntimeType;
+  }
+  /**
+   * @return string
+   */
+  public function getNotebookRuntimeType()
+  {
+    return $this->notebookRuntimeType;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1NotebookReservationAffinity
+   */
+  public function setReservationAffinity(GoogleCloudAiplatformV1NotebookReservationAffinity $reservationAffinity)
+  {
+    $this->reservationAffinity = $reservationAffinity;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1NotebookReservationAffinity
+   */
+  public function getReservationAffinity()
+  {
+    return $this->reservationAffinity;
+  }
+  /**
    * @param string
    */
   public function setServiceAccount($serviceAccount)
@@ -247,6 +320,34 @@ class GoogleCloudAiplatformV1NotebookRuntimeTemplate extends \Google\Model
   public function getServiceAccount()
   {
     return $this->serviceAccount;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1ShieldedVmConfig
+   */
+  public function setShieldedVmConfig(GoogleCloudAiplatformV1ShieldedVmConfig $shieldedVmConfig)
+  {
+    $this->shieldedVmConfig = $shieldedVmConfig;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1ShieldedVmConfig
+   */
+  public function getShieldedVmConfig()
+  {
+    return $this->shieldedVmConfig;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1NotebookSoftwareConfig
+   */
+  public function setSoftwareConfig(GoogleCloudAiplatformV1NotebookSoftwareConfig $softwareConfig)
+  {
+    $this->softwareConfig = $softwareConfig;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1NotebookSoftwareConfig
+   */
+  public function getSoftwareConfig()
+  {
+    return $this->softwareConfig;
   }
   /**
    * @param string

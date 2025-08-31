@@ -22,11 +22,23 @@ class UsageSnapshot extends \Google\Model
   /**
    * @var string
    */
+  public $acceleratorType;
+  /**
+   * @var string
+   */
+  public $milliAccelerator;
+  /**
+   * @var string
+   */
   public $milliDcu;
   /**
    * @var string
    */
   public $milliDcuPremium;
+  /**
+   * @var string
+   */
+  public $milliSlot;
   /**
    * @var string
    */
@@ -40,6 +52,34 @@ class UsageSnapshot extends \Google\Model
    */
   public $snapshotTime;
 
+  /**
+   * @param string
+   */
+  public function setAcceleratorType($acceleratorType)
+  {
+    $this->acceleratorType = $acceleratorType;
+  }
+  /**
+   * @return string
+   */
+  public function getAcceleratorType()
+  {
+    return $this->acceleratorType;
+  }
+  /**
+   * @param string
+   */
+  public function setMilliAccelerator($milliAccelerator)
+  {
+    $this->milliAccelerator = $milliAccelerator;
+  }
+  /**
+   * @return string
+   */
+  public function getMilliAccelerator()
+  {
+    return $this->milliAccelerator;
+  }
   /**
    * @param string
    */
@@ -67,6 +107,20 @@ class UsageSnapshot extends \Google\Model
   public function getMilliDcuPremium()
   {
     return $this->milliDcuPremium;
+  }
+  /**
+   * @param string
+   */
+  public function setMilliSlot($milliSlot)
+  {
+    $this->milliSlot = $milliSlot;
+  }
+  /**
+   * @return string
+   */
+  public function getMilliSlot()
+  {
+    return $this->milliSlot;
   }
   /**
    * @param string

@@ -41,6 +41,8 @@ class Permissions extends \Google\Service\Resource
    *
    * @opt_param string emailMessage A plain text custom message to include in the
    * notification email.
+   * @opt_param bool enforceExpansiveAccess Whether the request should enforce
+   * expansive access rules.
    * @opt_param bool enforceSingleParent Deprecated: See `moveToNewOwnersRoot` for
    * details.
    * @opt_param bool moveToNewOwnersRoot This parameter will only take effect if
@@ -64,6 +66,7 @@ class Permissions extends \Google\Service\Resource
    * the file ID parameter refers to a shared drive and the requester is an
    * administrator of the domain to which the shared drive belongs.
    * @return Permission
+   * @throws \Google\Service\Exception
    */
   public function create($fileId, Permission $postBody, $optParams = [])
   {
@@ -80,6 +83,8 @@ class Permissions extends \Google\Service\Resource
    * @param string $permissionId The ID of the permission.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param bool enforceExpansiveAccess Whether the request should enforce
+   * expansive access rules.
    * @opt_param bool supportsAllDrives Whether the requesting application supports
    * both My Drives and shared drives.
    * @opt_param bool supportsTeamDrives Deprecated: Use `supportsAllDrives`
@@ -88,6 +93,7 @@ class Permissions extends \Google\Service\Resource
    * administrator; if set to true, then the requester will be granted access if
    * the file ID parameter refers to a shared drive and the requester is an
    * administrator of the domain to which the shared drive belongs.
+   * @throws \Google\Service\Exception
    */
   public function delete($fileId, $permissionId, $optParams = [])
   {
@@ -111,6 +117,7 @@ class Permissions extends \Google\Service\Resource
    * the file ID parameter refers to a shared drive and the requester is an
    * administrator of the domain to which the shared drive belongs.
    * @return Permission
+   * @throws \Google\Service\Exception
    */
   public function get($fileId, $permissionId, $optParams = [])
   {
@@ -142,6 +149,7 @@ class Permissions extends \Google\Service\Resource
    * the file ID parameter refers to a shared drive and the requester is an
    * administrator of the domain to which the shared drive belongs.
    * @return PermissionList
+   * @throws \Google\Service\Exception
    */
   public function listPermissions($fileId, $optParams = [])
   {
@@ -159,6 +167,8 @@ class Permissions extends \Google\Service\Resource
    * @param Permission $postBody
    * @param array $optParams Optional parameters.
    *
+   * @opt_param bool enforceExpansiveAccess Whether the request should enforce
+   * expansive access rules.
    * @opt_param bool removeExpiration Whether to remove the expiration date.
    * @opt_param bool supportsAllDrives Whether the requesting application supports
    * both My Drives and shared drives.
@@ -172,6 +182,7 @@ class Permissions extends \Google\Service\Resource
    * the file ID parameter refers to a shared drive and the requester is an
    * administrator of the domain to which the shared drive belongs.
    * @return Permission
+   * @throws \Google\Service\Exception
    */
   public function update($fileId, $permissionId, Permission $postBody, $optParams = [])
   {

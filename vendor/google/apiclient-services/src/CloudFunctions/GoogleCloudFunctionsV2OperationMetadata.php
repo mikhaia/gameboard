@@ -25,6 +25,10 @@ class GoogleCloudFunctionsV2OperationMetadata extends \Google\Collection
    */
   public $apiVersion;
   /**
+   * @var string
+   */
+  public $buildName;
+  /**
    * @var bool
    */
   public $cancelRequested;
@@ -33,9 +37,17 @@ class GoogleCloudFunctionsV2OperationMetadata extends \Google\Collection
    */
   public $createTime;
   /**
+   * @var bool
+   */
+  public $customIamRoleDetected;
+  /**
    * @var string
    */
   public $endTime;
+  /**
+   * @var string
+   */
+  public $operationType;
   /**
    * @var array[]
    */
@@ -74,6 +86,20 @@ class GoogleCloudFunctionsV2OperationMetadata extends \Google\Collection
     return $this->apiVersion;
   }
   /**
+   * @param string
+   */
+  public function setBuildName($buildName)
+  {
+    $this->buildName = $buildName;
+  }
+  /**
+   * @return string
+   */
+  public function getBuildName()
+  {
+    return $this->buildName;
+  }
+  /**
    * @param bool
    */
   public function setCancelRequested($cancelRequested)
@@ -102,6 +128,20 @@ class GoogleCloudFunctionsV2OperationMetadata extends \Google\Collection
     return $this->createTime;
   }
   /**
+   * @param bool
+   */
+  public function setCustomIamRoleDetected($customIamRoleDetected)
+  {
+    $this->customIamRoleDetected = $customIamRoleDetected;
+  }
+  /**
+   * @return bool
+   */
+  public function getCustomIamRoleDetected()
+  {
+    return $this->customIamRoleDetected;
+  }
+  /**
    * @param string
    */
   public function setEndTime($endTime)
@@ -114,6 +154,20 @@ class GoogleCloudFunctionsV2OperationMetadata extends \Google\Collection
   public function getEndTime()
   {
     return $this->endTime;
+  }
+  /**
+   * @param string
+   */
+  public function setOperationType($operationType)
+  {
+    $this->operationType = $operationType;
+  }
+  /**
+   * @return string
+   */
+  public function getOperationType()
+  {
+    return $this->operationType;
   }
   /**
    * @param array[]

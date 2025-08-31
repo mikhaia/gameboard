@@ -17,10 +17,15 @@
 
 namespace Google\Service\CCAIPlatform;
 
-class ContactCenter extends \Google\Model
+class ContactCenter extends \Google\Collection
 {
+  protected $collection_key = 'privateComponents';
   protected $adminUserType = AdminUser::class;
   protected $adminUserDataType = '';
+  /**
+   * @var bool
+   */
+  public $advancedReportingEnabled;
   /**
    * @var bool
    */
@@ -29,6 +34,8 @@ class ContactCenter extends \Google\Model
    * @var string
    */
   public $createTime;
+  protected $criticalType = Critical::class;
+  protected $criticalDataType = '';
   /**
    * @var string
    */
@@ -37,6 +44,8 @@ class ContactCenter extends \Google\Model
    * @var string
    */
   public $displayName;
+  protected $earlyType = Early::class;
+  protected $earlyDataType = '';
   protected $instanceConfigType = InstanceConfig::class;
   protected $instanceConfigDataType = '';
   /**
@@ -51,6 +60,14 @@ class ContactCenter extends \Google\Model
    * @var string
    */
   public $name;
+  protected $normalType = Normal::class;
+  protected $normalDataType = '';
+  protected $privateAccessType = PrivateAccess::class;
+  protected $privateAccessDataType = '';
+  /**
+   * @var string[]
+   */
+  public $privateComponents;
   protected $samlParamsType = SAMLParams::class;
   protected $samlParamsDataType = '';
   /**
@@ -85,6 +102,20 @@ class ContactCenter extends \Google\Model
   /**
    * @param bool
    */
+  public function setAdvancedReportingEnabled($advancedReportingEnabled)
+  {
+    $this->advancedReportingEnabled = $advancedReportingEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getAdvancedReportingEnabled()
+  {
+    return $this->advancedReportingEnabled;
+  }
+  /**
+   * @param bool
+   */
   public function setCcaipManagedUsers($ccaipManagedUsers)
   {
     $this->ccaipManagedUsers = $ccaipManagedUsers;
@@ -109,6 +140,20 @@ class ContactCenter extends \Google\Model
   public function getCreateTime()
   {
     return $this->createTime;
+  }
+  /**
+   * @param Critical
+   */
+  public function setCritical(Critical $critical)
+  {
+    $this->critical = $critical;
+  }
+  /**
+   * @return Critical
+   */
+  public function getCritical()
+  {
+    return $this->critical;
   }
   /**
    * @param string
@@ -137,6 +182,20 @@ class ContactCenter extends \Google\Model
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+  /**
+   * @param Early
+   */
+  public function setEarly(Early $early)
+  {
+    $this->early = $early;
+  }
+  /**
+   * @return Early
+   */
+  public function getEarly()
+  {
+    return $this->early;
   }
   /**
    * @param InstanceConfig
@@ -193,6 +252,48 @@ class ContactCenter extends \Google\Model
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Normal
+   */
+  public function setNormal(Normal $normal)
+  {
+    $this->normal = $normal;
+  }
+  /**
+   * @return Normal
+   */
+  public function getNormal()
+  {
+    return $this->normal;
+  }
+  /**
+   * @param PrivateAccess
+   */
+  public function setPrivateAccess(PrivateAccess $privateAccess)
+  {
+    $this->privateAccess = $privateAccess;
+  }
+  /**
+   * @return PrivateAccess
+   */
+  public function getPrivateAccess()
+  {
+    return $this->privateAccess;
+  }
+  /**
+   * @param string[]
+   */
+  public function setPrivateComponents($privateComponents)
+  {
+    $this->privateComponents = $privateComponents;
+  }
+  /**
+   * @return string[]
+   */
+  public function getPrivateComponents()
+  {
+    return $this->privateComponents;
   }
   /**
    * @param SAMLParams

@@ -17,6 +17,7 @@
 
 namespace Google\Service\Compute\Resource;
 
+use Google\Service\Compute\GlobalSetLabelsRequest;
 use Google\Service\Compute\GlobalSetPolicyRequest;
 use Google\Service\Compute\MachineImage;
 use Google\Service\Compute\MachineImageList;
@@ -54,6 +55,7 @@ class MachineImages extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $machineImage, $optParams = [])
   {
@@ -68,6 +70,7 @@ class MachineImages extends \Google\Service\Resource
    * @param string $machineImage The name of the machine image.
    * @param array $optParams Optional parameters.
    * @return MachineImage
+   * @throws \Google\Service\Exception
    */
   public function get($project, $machineImage, $optParams = [])
   {
@@ -85,6 +88,7 @@ class MachineImages extends \Google\Service\Resource
    *
    * @opt_param int optionsRequestedPolicyVersion Requested IAM Policy version.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($project, $resource, $optParams = [])
   {
@@ -116,6 +120,7 @@ class MachineImages extends \Google\Service\Resource
    * @opt_param string sourceInstance Required. Source instance that is used to
    * create the machine image from.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, MachineImage $postBody, $optParams = [])
   {
@@ -180,8 +185,11 @@ class MachineImages extends \Google\Service\Resource
    * of results.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return MachineImageList
+   * @throws \Google\Service\Exception
    */
   public function listMachineImages($project, $optParams = [])
   {
@@ -198,12 +206,30 @@ class MachineImages extends \Google\Service\Resource
    * @param GlobalSetPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($project, $resource, GlobalSetPolicyRequest $postBody, $optParams = [])
   {
     $params = ['project' => $project, 'resource' => $resource, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('setIamPolicy', [$params], Policy::class);
+  }
+  /**
+   * Sets the labels on a machine image. To learn more about labels, read the
+   * Labeling Resources documentation. (machineImages.setLabels)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param GlobalSetLabelsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function setLabels($project, $resource, GlobalSetLabelsRequest $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'resource' => $resource, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('setLabels', [$params], Operation::class);
   }
   /**
    * Returns permissions that a caller has on the specified resource.
@@ -214,6 +240,7 @@ class MachineImages extends \Google\Service\Resource
    * @param TestPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($project, $resource, TestPermissionsRequest $postBody, $optParams = [])
   {
