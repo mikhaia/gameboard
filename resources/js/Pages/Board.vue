@@ -93,7 +93,7 @@ document.addEventListener("dragstart", function(event) {
 });
 
 document.addEventListener("drag", function(event) {
-  
+
 });
 
 document.addEventListener("dragend", function(event) {
@@ -141,7 +141,7 @@ document.addEventListener("drop", function(event) {
       } else {
         const parent = event.target.closest('.drag-container');
         parent.insertBefore(document.getElementById(event.dataTransfer.getData("Text")), event.target.closest('.drag').nextSibling)
-        
+
         event.target.classList.remove('active');
         const order = [];
         for (var i = 0; i < parent.children.length; i++) {
@@ -173,7 +173,9 @@ function switchMode() {
           </a>
           <h1>{{ board.title }}</h1>
           <div class="secure-icon">
-            <i :class="board.public ? 'gg-lock-unlock' : 'gg-lock'"></i>
+            <i class="material-symbols-outlined">
+                {{ board.public ? 'lock_open' : 'lock' }}
+            </i>
           </div>
           <div class="toggle-switch">
             <label>
