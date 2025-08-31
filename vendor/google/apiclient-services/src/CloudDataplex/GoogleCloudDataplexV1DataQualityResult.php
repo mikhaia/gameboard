@@ -20,6 +20,10 @@ namespace Google\Service\CloudDataplex;
 class GoogleCloudDataplexV1DataQualityResult extends \Google\Collection
 {
   protected $collection_key = 'rules';
+  protected $catalogPublishingStatusType = GoogleCloudDataplexV1DataScanCatalogPublishingStatus::class;
+  protected $catalogPublishingStatusDataType = '';
+  protected $columnsType = GoogleCloudDataplexV1DataQualityColumnResult::class;
+  protected $columnsDataType = 'array';
   protected $dimensionsType = GoogleCloudDataplexV1DataQualityDimensionResult::class;
   protected $dimensionsDataType = 'array';
   /**
@@ -36,7 +40,39 @@ class GoogleCloudDataplexV1DataQualityResult extends \Google\Collection
   protected $rulesDataType = 'array';
   protected $scannedDataType = GoogleCloudDataplexV1ScannedData::class;
   protected $scannedDataDataType = '';
+  /**
+   * @var float
+   */
+  public $score;
 
+  /**
+   * @param GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+   */
+  public function setCatalogPublishingStatus(GoogleCloudDataplexV1DataScanCatalogPublishingStatus $catalogPublishingStatus)
+  {
+    $this->catalogPublishingStatus = $catalogPublishingStatus;
+  }
+  /**
+   * @return GoogleCloudDataplexV1DataScanCatalogPublishingStatus
+   */
+  public function getCatalogPublishingStatus()
+  {
+    return $this->catalogPublishingStatus;
+  }
+  /**
+   * @param GoogleCloudDataplexV1DataQualityColumnResult[]
+   */
+  public function setColumns($columns)
+  {
+    $this->columns = $columns;
+  }
+  /**
+   * @return GoogleCloudDataplexV1DataQualityColumnResult[]
+   */
+  public function getColumns()
+  {
+    return $this->columns;
+  }
   /**
    * @param GoogleCloudDataplexV1DataQualityDimensionResult[]
    */
@@ -120,6 +156,20 @@ class GoogleCloudDataplexV1DataQualityResult extends \Google\Collection
   public function getScannedData()
   {
     return $this->scannedData;
+  }
+  /**
+   * @param float
+   */
+  public function setScore($score)
+  {
+    $this->score = $score;
+  }
+  /**
+   * @return float
+   */
+  public function getScore()
+  {
+    return $this->score;
   }
 }
 

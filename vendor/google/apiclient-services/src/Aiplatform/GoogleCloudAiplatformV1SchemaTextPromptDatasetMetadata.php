@@ -17,12 +17,27 @@
 
 namespace Google\Service\Aiplatform;
 
-class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Model
+class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Collection
 {
+  protected $collection_key = 'stopSequences';
+  /**
+   * @var string
+   */
+  public $candidateCount;
   /**
    * @var string
    */
   public $gcsUri;
+  protected $groundingConfigType = GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig::class;
+  protected $groundingConfigDataType = '';
+  /**
+   * @var bool
+   */
+  public $hasPromptVariable;
+  /**
+   * @var bool
+   */
+  public $logprobs;
   /**
    * @var string
    */
@@ -30,7 +45,33 @@ class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Mod
   /**
    * @var string
    */
+  public $note;
+  protected $promptApiSchemaType = GoogleCloudAiplatformV1SchemaPromptApiSchema::class;
+  protected $promptApiSchemaDataType = '';
+  /**
+   * @var string
+   */
   public $promptType;
+  /**
+   * @var bool
+   */
+  public $seedEnabled;
+  /**
+   * @var string
+   */
+  public $seedValue;
+  /**
+   * @var string[]
+   */
+  public $stopSequences;
+  /**
+   * @var string
+   */
+  public $systemInstruction;
+  /**
+   * @var string
+   */
+  public $systemInstructionGcsUri;
   /**
    * @var float
    */
@@ -51,6 +92,20 @@ class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Mod
   /**
    * @param string
    */
+  public function setCandidateCount($candidateCount)
+  {
+    $this->candidateCount = $candidateCount;
+  }
+  /**
+   * @return string
+   */
+  public function getCandidateCount()
+  {
+    return $this->candidateCount;
+  }
+  /**
+   * @param string
+   */
   public function setGcsUri($gcsUri)
   {
     $this->gcsUri = $gcsUri;
@@ -61,6 +116,48 @@ class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Mod
   public function getGcsUri()
   {
     return $this->gcsUri;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig
+   */
+  public function setGroundingConfig(GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig $groundingConfig)
+  {
+    $this->groundingConfig = $groundingConfig;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig
+   */
+  public function getGroundingConfig()
+  {
+    return $this->groundingConfig;
+  }
+  /**
+   * @param bool
+   */
+  public function setHasPromptVariable($hasPromptVariable)
+  {
+    $this->hasPromptVariable = $hasPromptVariable;
+  }
+  /**
+   * @return bool
+   */
+  public function getHasPromptVariable()
+  {
+    return $this->hasPromptVariable;
+  }
+  /**
+   * @param bool
+   */
+  public function setLogprobs($logprobs)
+  {
+    $this->logprobs = $logprobs;
+  }
+  /**
+   * @return bool
+   */
+  public function getLogprobs()
+  {
+    return $this->logprobs;
   }
   /**
    * @param string
@@ -79,6 +176,34 @@ class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Mod
   /**
    * @param string
    */
+  public function setNote($note)
+  {
+    $this->note = $note;
+  }
+  /**
+   * @return string
+   */
+  public function getNote()
+  {
+    return $this->note;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1SchemaPromptApiSchema
+   */
+  public function setPromptApiSchema(GoogleCloudAiplatformV1SchemaPromptApiSchema $promptApiSchema)
+  {
+    $this->promptApiSchema = $promptApiSchema;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1SchemaPromptApiSchema
+   */
+  public function getPromptApiSchema()
+  {
+    return $this->promptApiSchema;
+  }
+  /**
+   * @param string
+   */
   public function setPromptType($promptType)
   {
     $this->promptType = $promptType;
@@ -89,6 +214,76 @@ class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata extends \Google\Mod
   public function getPromptType()
   {
     return $this->promptType;
+  }
+  /**
+   * @param bool
+   */
+  public function setSeedEnabled($seedEnabled)
+  {
+    $this->seedEnabled = $seedEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getSeedEnabled()
+  {
+    return $this->seedEnabled;
+  }
+  /**
+   * @param string
+   */
+  public function setSeedValue($seedValue)
+  {
+    $this->seedValue = $seedValue;
+  }
+  /**
+   * @return string
+   */
+  public function getSeedValue()
+  {
+    return $this->seedValue;
+  }
+  /**
+   * @param string[]
+   */
+  public function setStopSequences($stopSequences)
+  {
+    $this->stopSequences = $stopSequences;
+  }
+  /**
+   * @return string[]
+   */
+  public function getStopSequences()
+  {
+    return $this->stopSequences;
+  }
+  /**
+   * @param string
+   */
+  public function setSystemInstruction($systemInstruction)
+  {
+    $this->systemInstruction = $systemInstruction;
+  }
+  /**
+   * @return string
+   */
+  public function getSystemInstruction()
+  {
+    return $this->systemInstruction;
+  }
+  /**
+   * @param string
+   */
+  public function setSystemInstructionGcsUri($systemInstructionGcsUri)
+  {
+    $this->systemInstructionGcsUri = $systemInstructionGcsUri;
+  }
+  /**
+   * @return string
+   */
+  public function getSystemInstructionGcsUri()
+  {
+    return $this->systemInstructionGcsUri;
   }
   /**
    * @param float

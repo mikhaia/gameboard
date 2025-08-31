@@ -35,6 +35,7 @@ use Google\Service\Dataflow\SnapshotJobRequest;
 class ProjectsLocationsJobs extends \Google\Service\Resource
 {
   /**
+   * A Job is a multi-stage computation graph run by the Cloud Dataflow service.
    * Creates a Cloud Dataflow job. To create a job, we recommend using
    * `projects.locations.jobs.create` with a [regional endpoint]
    * (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
@@ -54,6 +55,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * message.
    * @opt_param string view The level of information requested in response.
    * @return Job
+   * @throws \Google\Service\Exception
    */
   public function create($projectId, $location, Job $postBody, $optParams = [])
   {
@@ -78,6 +80,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    *
    * @opt_param string view The level of information requested in response.
    * @return Job
+   * @throws \Google\Service\Exception
    */
   public function get($projectId, $location, $jobId, $optParams = [])
   {
@@ -104,6 +107,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * next_page_token returned by an earlier call. This will cause the next page of
    * results to be returned.
    * @return JobExecutionDetails
+   * @throws \Google\Service\Exception
    */
   public function getExecutionDetails($projectId, $location, $jobId, $optParams = [])
   {
@@ -129,6 +133,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * this time. Default is to return all information about all metrics for the
    * job.
    * @return JobMetrics
+   * @throws \Google\Service\Exception
    */
   public function getMetrics($projectId, $location, $jobId, $optParams = [])
   {
@@ -163,6 +168,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * @opt_param string view Deprecated. ListJobs always returns summaries now. Use
    * GetJob for other JobViews.
    * @return ListJobsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsJobs($projectId, $location, $optParams = [])
   {
@@ -179,6 +185,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * @param SnapshotJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Snapshot
+   * @throws \Google\Service\Exception
    */
   public function snapshot($projectId, $location, $jobId, SnapshotJobRequest $postBody, $optParams = [])
   {
@@ -210,6 +217,7 @@ class ProjectsLocationsJobs extends \Google\Service\Resource
    * RequestedJobState and update_mask are specified, an error will be returned as
    * we cannot update both state and mask.
    * @return Job
+   * @throws \Google\Service\Exception
    */
   public function update($projectId, $location, $jobId, Job $postBody, $optParams = [])
   {

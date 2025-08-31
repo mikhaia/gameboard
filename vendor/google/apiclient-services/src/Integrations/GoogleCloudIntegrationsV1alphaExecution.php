@@ -23,6 +23,12 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @var string
    */
+  public $cloudKmsKey;
+  protected $cloudLoggingDetailsType = GoogleCloudIntegrationsV1alphaCloudLoggingDetails::class;
+  protected $cloudLoggingDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
   protected $directSubExecutionsType = GoogleCloudIntegrationsV1alphaExecution::class;
   protected $directSubExecutionsDataType = 'array';
@@ -37,7 +43,13 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @var string
    */
+  public $integrationVersionState;
+  /**
+   * @var string
+   */
   public $name;
+  protected $replayInfoType = GoogleCloudIntegrationsV1alphaExecutionReplayInfo::class;
+  protected $replayInfoDataType = '';
   protected $requestParametersType = GoogleCloudIntegrationsV1alphaValueType::class;
   protected $requestParametersDataType = 'map';
   protected $requestParamsType = EnterpriseCrmFrontendsEventbusProtoParameterEntry::class;
@@ -49,12 +61,44 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @var string
    */
+  public $snapshotNumber;
+  /**
+   * @var string
+   */
   public $triggerId;
   /**
    * @var string
    */
   public $updateTime;
 
+  /**
+   * @param string
+   */
+  public function setCloudKmsKey($cloudKmsKey)
+  {
+    $this->cloudKmsKey = $cloudKmsKey;
+  }
+  /**
+   * @return string
+   */
+  public function getCloudKmsKey()
+  {
+    return $this->cloudKmsKey;
+  }
+  /**
+   * @param GoogleCloudIntegrationsV1alphaCloudLoggingDetails
+   */
+  public function setCloudLoggingDetails(GoogleCloudIntegrationsV1alphaCloudLoggingDetails $cloudLoggingDetails)
+  {
+    $this->cloudLoggingDetails = $cloudLoggingDetails;
+  }
+  /**
+   * @return GoogleCloudIntegrationsV1alphaCloudLoggingDetails
+   */
+  public function getCloudLoggingDetails()
+  {
+    return $this->cloudLoggingDetails;
+  }
   /**
    * @param string
    */
@@ -128,6 +172,20 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   /**
    * @param string
    */
+  public function setIntegrationVersionState($integrationVersionState)
+  {
+    $this->integrationVersionState = $integrationVersionState;
+  }
+  /**
+   * @return string
+   */
+  public function getIntegrationVersionState()
+  {
+    return $this->integrationVersionState;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
@@ -138,6 +196,20 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param GoogleCloudIntegrationsV1alphaExecutionReplayInfo
+   */
+  public function setReplayInfo(GoogleCloudIntegrationsV1alphaExecutionReplayInfo $replayInfo)
+  {
+    $this->replayInfo = $replayInfo;
+  }
+  /**
+   * @return GoogleCloudIntegrationsV1alphaExecutionReplayInfo
+   */
+  public function getReplayInfo()
+  {
+    return $this->replayInfo;
   }
   /**
    * @param GoogleCloudIntegrationsV1alphaValueType[]
@@ -194,6 +266,20 @@ class GoogleCloudIntegrationsV1alphaExecution extends \Google\Collection
   public function getResponseParams()
   {
     return $this->responseParams;
+  }
+  /**
+   * @param string
+   */
+  public function setSnapshotNumber($snapshotNumber)
+  {
+    $this->snapshotNumber = $snapshotNumber;
+  }
+  /**
+   * @return string
+   */
+  public function getSnapshotNumber()
+  {
+    return $this->snapshotNumber;
   }
   /**
    * @param string

@@ -40,6 +40,12 @@ class PackageData extends \Google\Collection
    * @var string
    */
   public $hashDigest;
+  protected $layerDetailsType = LayerDetails::class;
+  protected $layerDetailsDataType = '';
+  /**
+   * @var string[]
+   */
+  public $licenses;
   protected $maintainerType = Maintainer::class;
   protected $maintainerDataType = '';
   /**
@@ -170,6 +176,34 @@ class PackageData extends \Google\Collection
   public function getHashDigest()
   {
     return $this->hashDigest;
+  }
+  /**
+   * @param LayerDetails
+   */
+  public function setLayerDetails(LayerDetails $layerDetails)
+  {
+    $this->layerDetails = $layerDetails;
+  }
+  /**
+   * @return LayerDetails
+   */
+  public function getLayerDetails()
+  {
+    return $this->layerDetails;
+  }
+  /**
+   * @param string[]
+   */
+  public function setLicenses($licenses)
+  {
+    $this->licenses = $licenses;
+  }
+  /**
+   * @return string[]
+   */
+  public function getLicenses()
+  {
+    return $this->licenses;
   }
   /**
    * @param Maintainer

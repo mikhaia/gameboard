@@ -19,9 +19,13 @@ namespace Google\Service\Compute\Resource;
 
 use Google\Service\Compute\BackendBucket;
 use Google\Service\Compute\BackendBucketList;
+use Google\Service\Compute\GlobalSetPolicyRequest;
 use Google\Service\Compute\Operation;
+use Google\Service\Compute\Policy;
 use Google\Service\Compute\SecurityPolicyReference;
 use Google\Service\Compute\SignedUrlKey;
+use Google\Service\Compute\TestPermissionsRequest;
+use Google\Service\Compute\TestPermissionsResponse;
 
 /**
  * The "backendBuckets" collection of methods.
@@ -54,6 +58,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function addSignedUrlKey($project, $backendBucket, SignedUrlKey $postBody, $optParams = [])
   {
@@ -79,6 +84,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $backendBucket, $optParams = [])
   {
@@ -107,6 +113,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function deleteSignedUrlKey($project, $backendBucket, $keyName, $optParams = [])
   {
@@ -121,12 +128,31 @@ class BackendBuckets extends \Google\Service\Resource
    * @param string $backendBucket Name of the BackendBucket resource to return.
    * @param array $optParams Optional parameters.
    * @return BackendBucket
+   * @throws \Google\Service\Exception
    */
   public function get($project, $backendBucket, $optParams = [])
   {
     $params = ['project' => $project, 'backendBucket' => $backendBucket];
     $params = array_merge($params, $optParams);
     return $this->call('get', [$params], BackendBucket::class);
+  }
+  /**
+   * Gets the access control policy for a resource. May be empty if no such policy
+   * or resource exists. (backendBuckets.getIamPolicy)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int optionsRequestedPolicyVersion Requested IAM Policy version.
+   * @return Policy
+   * @throws \Google\Service\Exception
+   */
+  public function getIamPolicy($project, $resource, $optParams = [])
+  {
+    $params = ['project' => $project, 'resource' => $resource];
+    $params = array_merge($params, $optParams);
+    return $this->call('getIamPolicy', [$params], Policy::class);
   }
   /**
    * Creates a BackendBucket resource in the specified project using the data
@@ -147,6 +173,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, BackendBucket $postBody, $optParams = [])
   {
@@ -211,8 +238,11 @@ class BackendBuckets extends \Google\Service\Resource
    * of results.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return BackendBucketList
+   * @throws \Google\Service\Exception
    */
   public function listBackendBuckets($project, $optParams = [])
   {
@@ -241,6 +271,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($project, $backendBucket, BackendBucket $postBody, $optParams = [])
   {
@@ -253,7 +284,7 @@ class BackendBuckets extends \Google\Service\Resource
    * (backendBuckets.setEdgeSecurityPolicy)
    *
    * @param string $project Project ID for this request.
-   * @param string $backendBucket Name of the BackendService resource to which the
+   * @param string $backendBucket Name of the BackendBucket resource to which the
    * security policy should be set. The name should conform to RFC1035.
    * @param SecurityPolicyReference $postBody
    * @param array $optParams Optional parameters.
@@ -269,12 +300,47 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function setEdgeSecurityPolicy($project, $backendBucket, SecurityPolicyReference $postBody, $optParams = [])
   {
     $params = ['project' => $project, 'backendBucket' => $backendBucket, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('setEdgeSecurityPolicy', [$params], Operation::class);
+  }
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy. (backendBuckets.setIamPolicy)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param GlobalSetPolicyRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Policy
+   * @throws \Google\Service\Exception
+   */
+  public function setIamPolicy($project, $resource, GlobalSetPolicyRequest $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'resource' => $resource, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('setIamPolicy', [$params], Policy::class);
+  }
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   * (backendBuckets.testIamPermissions)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param TestPermissionsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return TestPermissionsResponse
+   * @throws \Google\Service\Exception
+   */
+  public function testIamPermissions($project, $resource, TestPermissionsRequest $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'resource' => $resource, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('testIamPermissions', [$params], TestPermissionsResponse::class);
   }
   /**
    * Updates the specified BackendBucket resource with the data included in the
@@ -296,6 +362,7 @@ class BackendBuckets extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function update($project, $backendBucket, BackendBucket $postBody, $optParams = [])
   {

@@ -34,6 +34,10 @@ class Backup extends \Google\Model
   /**
    * @var string
    */
+  public $createCompletionTime;
+  /**
+   * @var string
+   */
   public $createTime;
   /**
    * @var string
@@ -78,6 +82,10 @@ class Backup extends \Google\Model
    */
   public $reconciling;
   /**
+   * @var bool
+   */
+  public $satisfiesPzs;
+  /**
    * @var string
    */
   public $sizeBytes;
@@ -85,6 +93,10 @@ class Backup extends \Google\Model
    * @var string
    */
   public $state;
+  /**
+   * @var string[]
+   */
+  public $tags;
   /**
    * @var string
    */
@@ -139,6 +151,20 @@ class Backup extends \Google\Model
   public function getClusterUid()
   {
     return $this->clusterUid;
+  }
+  /**
+   * @param string
+   */
+  public function setCreateCompletionTime($createCompletionTime)
+  {
+    $this->createCompletionTime = $createCompletionTime;
+  }
+  /**
+   * @return string
+   */
+  public function getCreateCompletionTime()
+  {
+    return $this->createCompletionTime;
   }
   /**
    * @param string
@@ -323,6 +349,20 @@ class Backup extends \Google\Model
     return $this->reconciling;
   }
   /**
+   * @param bool
+   */
+  public function setSatisfiesPzs($satisfiesPzs)
+  {
+    $this->satisfiesPzs = $satisfiesPzs;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzs()
+  {
+    return $this->satisfiesPzs;
+  }
+  /**
    * @param string
    */
   public function setSizeBytes($sizeBytes)
@@ -349,6 +389,20 @@ class Backup extends \Google\Model
   public function getState()
   {
     return $this->state;
+  }
+  /**
+   * @param string[]
+   */
+  public function setTags($tags)
+  {
+    $this->tags = $tags;
+  }
+  /**
+   * @return string[]
+   */
+  public function getTags()
+  {
+    return $this->tags;
   }
   /**
    * @param string

@@ -37,6 +37,8 @@ class VmwareCluster extends \Google\Model
   protected $authorizationDataType = '';
   protected $autoRepairConfigType = VmwareAutoRepairConfig::class;
   protected $autoRepairConfigDataType = '';
+  protected $binaryAuthorizationType = BinaryAuthorization::class;
+  protected $binaryAuthorizationDataType = '';
   protected $controlPlaneNodeType = VmwareControlPlaneNodeConfig::class;
   protected $controlPlaneNodeDataType = '';
   /**
@@ -57,6 +59,10 @@ class VmwareCluster extends \Google\Model
    * @var bool
    */
   public $disableBundledIngress;
+  /**
+   * @var bool
+   */
+  public $enableAdvancedCluster;
   /**
    * @var bool
    */
@@ -203,6 +209,20 @@ class VmwareCluster extends \Google\Model
     return $this->autoRepairConfig;
   }
   /**
+   * @param BinaryAuthorization
+   */
+  public function setBinaryAuthorization(BinaryAuthorization $binaryAuthorization)
+  {
+    $this->binaryAuthorization = $binaryAuthorization;
+  }
+  /**
+   * @return BinaryAuthorization
+   */
+  public function getBinaryAuthorization()
+  {
+    return $this->binaryAuthorization;
+  }
+  /**
    * @param VmwareControlPlaneNodeConfig
    */
   public function setControlPlaneNode(VmwareControlPlaneNodeConfig $controlPlaneNode)
@@ -285,6 +305,20 @@ class VmwareCluster extends \Google\Model
   public function getDisableBundledIngress()
   {
     return $this->disableBundledIngress;
+  }
+  /**
+   * @param bool
+   */
+  public function setEnableAdvancedCluster($enableAdvancedCluster)
+  {
+    $this->enableAdvancedCluster = $enableAdvancedCluster;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableAdvancedCluster()
+  {
+    return $this->enableAdvancedCluster;
   }
   /**
    * @param bool

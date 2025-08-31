@@ -52,6 +52,7 @@ class Interconnects extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $interconnect, $optParams = [])
   {
@@ -67,6 +68,7 @@ class Interconnects extends \Google\Service\Resource
    * @param string $interconnect Name of the interconnect to return.
    * @param array $optParams Optional parameters.
    * @return Interconnect
+   * @throws \Google\Service\Exception
    */
   public function get($project, $interconnect, $optParams = [])
   {
@@ -75,13 +77,18 @@ class Interconnects extends \Google\Service\Resource
     return $this->call('get', [$params], Interconnect::class);
   }
   /**
-   * Returns the interconnectDiagnostics for the specified Interconnect.
+   * Returns the interconnectDiagnostics for the specified Interconnect. In the
+   * event of a global outage, do not use this API to make decisions about where
+   * to redirect your network traffic. Unlike a VLAN attachment, which is
+   * regional, a Cloud Interconnect connection is a global resource. A global
+   * outage can prevent this API from functioning properly.
    * (interconnects.getDiagnostics)
    *
    * @param string $project Project ID for this request.
    * @param string $interconnect Name of the interconnect resource to query.
    * @param array $optParams Optional parameters.
    * @return InterconnectsGetDiagnosticsResponse
+   * @throws \Google\Service\Exception
    */
   public function getDiagnostics($project, $interconnect, $optParams = [])
   {
@@ -97,6 +104,7 @@ class Interconnects extends \Google\Service\Resource
    * @param string $interconnect Name of the interconnect resource to query.
    * @param array $optParams Optional parameters.
    * @return InterconnectsGetMacsecConfigResponse
+   * @throws \Google\Service\Exception
    */
   public function getMacsecConfig($project, $interconnect, $optParams = [])
   {
@@ -123,6 +131,7 @@ class Interconnects extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, Interconnect $postBody, $optParams = [])
   {
@@ -187,8 +196,11 @@ class Interconnects extends \Google\Service\Resource
    * of results.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return InterconnectList
+   * @throws \Google\Service\Exception
    */
   public function listInterconnects($project, $optParams = [])
   {
@@ -217,6 +229,7 @@ class Interconnects extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($project, $interconnect, Interconnect $postBody, $optParams = [])
   {
@@ -233,6 +246,7 @@ class Interconnects extends \Google\Service\Resource
    * @param GlobalSetLabelsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function setLabels($project, $resource, GlobalSetLabelsRequest $postBody, $optParams = [])
   {

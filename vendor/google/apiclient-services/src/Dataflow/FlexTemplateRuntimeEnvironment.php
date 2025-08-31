@@ -19,11 +19,15 @@ namespace Google\Service\Dataflow;
 
 class FlexTemplateRuntimeEnvironment extends \Google\Collection
 {
-  protected $collection_key = 'additionalExperiments';
+  protected $collection_key = 'additionalPipelineOptions';
   /**
    * @var string[]
    */
   public $additionalExperiments;
+  /**
+   * @var string[]
+   */
+  public $additionalPipelineOptions;
   /**
    * @var string[]
    */
@@ -99,6 +103,10 @@ class FlexTemplateRuntimeEnvironment extends \Google\Collection
   /**
    * @var string
    */
+  public $streamingMode;
+  /**
+   * @var string
+   */
   public $subnetwork;
   /**
    * @var string
@@ -130,6 +138,20 @@ class FlexTemplateRuntimeEnvironment extends \Google\Collection
   public function getAdditionalExperiments()
   {
     return $this->additionalExperiments;
+  }
+  /**
+   * @param string[]
+   */
+  public function setAdditionalPipelineOptions($additionalPipelineOptions)
+  {
+    $this->additionalPipelineOptions = $additionalPipelineOptions;
+  }
+  /**
+   * @return string[]
+   */
+  public function getAdditionalPipelineOptions()
+  {
+    return $this->additionalPipelineOptions;
   }
   /**
    * @param string[]
@@ -382,6 +404,20 @@ class FlexTemplateRuntimeEnvironment extends \Google\Collection
   public function getStagingLocation()
   {
     return $this->stagingLocation;
+  }
+  /**
+   * @param string
+   */
+  public function setStreamingMode($streamingMode)
+  {
+    $this->streamingMode = $streamingMode;
+  }
+  /**
+   * @return string
+   */
+  public function getStreamingMode()
+  {
+    return $this->streamingMode;
   }
   /**
    * @param string

@@ -39,9 +39,23 @@ class GoogleCloudAiplatformV1CustomJobSpec extends \Google\Collection
    */
   public $experimentRun;
   /**
+   * @var string[]
+   */
+  public $models;
+  /**
    * @var string
    */
   public $network;
+  /**
+   * @var string
+   */
+  public $persistentResourceId;
+  /**
+   * @var string
+   */
+  public $protectedArtifactLocationId;
+  protected $pscInterfaceConfigType = GoogleCloudAiplatformV1PscInterfaceConfig::class;
+  protected $pscInterfaceConfigDataType = '';
   /**
    * @var string[]
    */
@@ -130,6 +144,20 @@ class GoogleCloudAiplatformV1CustomJobSpec extends \Google\Collection
     return $this->experimentRun;
   }
   /**
+   * @param string[]
+   */
+  public function setModels($models)
+  {
+    $this->models = $models;
+  }
+  /**
+   * @return string[]
+   */
+  public function getModels()
+  {
+    return $this->models;
+  }
+  /**
    * @param string
    */
   public function setNetwork($network)
@@ -142,6 +170,48 @@ class GoogleCloudAiplatformV1CustomJobSpec extends \Google\Collection
   public function getNetwork()
   {
     return $this->network;
+  }
+  /**
+   * @param string
+   */
+  public function setPersistentResourceId($persistentResourceId)
+  {
+    $this->persistentResourceId = $persistentResourceId;
+  }
+  /**
+   * @return string
+   */
+  public function getPersistentResourceId()
+  {
+    return $this->persistentResourceId;
+  }
+  /**
+   * @param string
+   */
+  public function setProtectedArtifactLocationId($protectedArtifactLocationId)
+  {
+    $this->protectedArtifactLocationId = $protectedArtifactLocationId;
+  }
+  /**
+   * @return string
+   */
+  public function getProtectedArtifactLocationId()
+  {
+    return $this->protectedArtifactLocationId;
+  }
+  /**
+   * @param GoogleCloudAiplatformV1PscInterfaceConfig
+   */
+  public function setPscInterfaceConfig(GoogleCloudAiplatformV1PscInterfaceConfig $pscInterfaceConfig)
+  {
+    $this->pscInterfaceConfig = $pscInterfaceConfig;
+  }
+  /**
+   * @return GoogleCloudAiplatformV1PscInterfaceConfig
+   */
+  public function getPscInterfaceConfig()
+  {
+    return $this->pscInterfaceConfig;
   }
   /**
    * @param string[]

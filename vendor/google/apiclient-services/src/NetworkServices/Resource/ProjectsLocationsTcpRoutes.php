@@ -42,6 +42,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * @opt_param string tcpRouteId Required. Short name of the TcpRoute resource to
    * be created.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, TcpRoute $postBody, $optParams = [])
   {
@@ -56,6 +57,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * the format `projects/locations/global/tcpRoutes`.
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -70,6 +72,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * format `projects/locations/global/tcpRoutes`.
    * @param array $optParams Optional parameters.
    * @return TcpRoute
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -91,7 +94,11 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * `ListTcpRoutesResponse` Indicates that this is a continuation of a prior
    * `ListTcpRoutes` call, and that the system should return the next page of
    * data.
+   * @opt_param bool returnPartialSuccess Optional. If true, allow partial
+   * responses for multi-regional Aggregated List requests. Otherwise if one of
+   * the locations is down or unreachable, the Aggregated List request will fail.
    * @return ListTcpRoutesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsTcpRoutes($parent, $optParams = [])
   {
@@ -102,7 +109,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
   /**
    * Updates the parameters of a single TcpRoute. (tcpRoutes.patch)
    *
-   * @param string $name Required. Name of the TcpRoute resource. It matches
+   * @param string $name Identifier. Name of the TcpRoute resource. It matches
    * pattern `projects/locations/global/tcpRoutes/tcp_route_name>`.
    * @param TcpRoute $postBody
    * @param array $optParams Optional parameters.
@@ -113,6 +120,7 @@ class ProjectsLocationsTcpRoutes extends \Google\Service\Resource
    * request. A field will be overwritten if it is in the mask. If the user does
    * not provide a mask then all fields will be overwritten.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, TcpRoute $postBody, $optParams = [])
   {

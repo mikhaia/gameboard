@@ -37,7 +37,10 @@ class ProjectsLocationsConnectionsEntityTypes extends \Google\Service\Resource
    * cts/{project}/locations/{location}/connections/{connection}/entityTypes/{enti
    * tyType}
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string view Specifies view for entity type schema.
    * @return EntityType
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -60,6 +63,7 @@ class ProjectsLocationsConnectionsEntityTypes extends \Google\Service\Resource
    * @opt_param string view Specifies which fields of the Entity Type are returned
    * in the response.
    * @return ListEntityTypesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsConnectionsEntityTypes($parent, $optParams = [])
   {
