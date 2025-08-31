@@ -61,9 +61,18 @@ const openPasswordModal = () => {
         </div>
         <div class="user-dropdown right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
           <div class="py-1">
-            <a @click="openProfileModal()" class="block px-4 py-2 text-sm">Profile settigns</a>
-            <a @click="openPasswordModal()" class="block px-4 py-2 text-sm">Change password</a>
-            <Link href="/logout" class="block px-4 py-2 text-sm">Logout</Link>
+            <a @click="openProfileModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+              <span class="material-symbols-outlined mr-2">manage_accounts</span>
+              <span>Profile settings</span>
+            </a>
+            <a @click="openPasswordModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+              <span class="material-symbols-outlined mr-2">lock_reset</span>
+              <span>Change password</span>
+            </a>
+            <Link href="/logout" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+              <span class="material-symbols-outlined mr-2">logout</span>
+              <span>Logout</span>
+            </Link>
           </div>
         </div>
       </div>
