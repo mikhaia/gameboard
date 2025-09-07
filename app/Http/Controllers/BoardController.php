@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Board;
 use App\Models\Column;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class BoardController extends Controller
 {
