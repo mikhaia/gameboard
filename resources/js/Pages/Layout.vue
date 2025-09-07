@@ -3,8 +3,12 @@ import { Link, usePage } from '@inertiajs/vue3'
 import boardModal from './Modals/Board.vue'
 import profileModal from './Modals/Profile.vue'
 import passwordModal from './Modals/Password.vue'
+import { onMounted, ref } from 'vue'
+import Sortable from 'sortablejs'
+import axios from 'axios'
 
 const page = usePage()
+const boards = ref(page.props.boards)
 
 const openModal = (data) => {
   boardModal.methods.open(data)
@@ -17,6 +21,26 @@ const openProfileModal = () => {
 const openPasswordModal = () => {
   passwordModal.methods.open();
 }
+
+onMounted(() => {
+  Sortable.create(document.getElementById('boards-list'), {
+    animation: 150,
+    ghostClass: 'board-placeholder',
+    draggable: '.board-item',
+    onEnd: () => {
+      const order = Array.from(document.querySelectorAll('#boards-list .board-item'))
+        .map(el => el.dataset.id)
+      boards.value = order.map(id => boards.value.find(b => b.id === id))
+      axios.put('/boards/sort', order)
+    },
+    onMove: (evt) => {
+      const related = evt.related
+      if (!related) return true
+      if (related.id === 'create-board' || related.id === 'dashboard') return false
+      return true
+    }
+  })
+})
 </script>
 
 <template>
@@ -24,15 +48,15 @@ const openPasswordModal = () => {
 <div class="h-screen">
   <aside class="bg-gray-800 z-10 h-screen sidebar">
       <h1 class="text-white text-2xl font-bold text-center py-4">{{ page.props.appName }}</h1>
-      <nav class="sidenav">
-        <li>
-          <a @click="openModal({title: 'New Board'})" class="cursor-pointer" id="create-board">
+      <ul class="sidenav" id="boards-list">
+        <li id="create-board">
+          <a @click="openModal({title: 'New Board'})" class="cursor-pointer">
             <span class="material-symbols-outlined icon">add_circle</span>
             <span class="name">Create New Board</span>
           </a>
         </li>
-        <li :class="{'active' : $page.url.startsWith('/boards/'+item.id) }"
-          v-for="item in page.props.boards">
+        <li v-for="item in boards" :key="item.id" :data-id="item.id" class="board-item"
+          :class="{'active' : $page.url.startsWith('/boards/'+item.id) }">
           <button class="edit-board-btn"
             :class="{ 'text-white': !$page.url.startsWith('/boards/' + item.id) }"
             @click="openModal(item)">
@@ -44,13 +68,13 @@ const openPasswordModal = () => {
             <span class="name">{{ item.title }}</span>
           </Link>
         </li>
-        <li :class="{'active' : $page.component === 'Index' }">
+        <li id="dashboard" :class="{'active' : $page.component === 'Index' }">
           <Link href="/">
             <span class="material-symbols-outlined icon">dashboard</span>
             <span class="name">Dashboard</span>
           </Link>
         </li>
-      </nav>
+      </ul>
     </aside>
 
     <main class="relative main">

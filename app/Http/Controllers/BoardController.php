@@ -42,6 +42,7 @@ class BoardController extends Controller
 
         $data = $request->input();
         $data['user_id'] = auth()->id();
+        $data['position'] = Board::where('user_id', auth()->id())->max('position') + 1;
         // Icon
         $data['icon'] = $this->changeImage('icon', 50, 50, $request, null, true);
         // Background
@@ -82,6 +83,12 @@ class BoardController extends Controller
         Board::find($boardId)->update(['dark' => $request->input('dark')]);
         $msg = ($request->input('dark') ? 'Dark' : 'Light') . ' mode is on!';
         return ['success' => $msg];
+    }
+
+    public function sort(Request $request) {
+        foreach($request->input() as $position => $id) {
+            Board::where('user_id', auth()->id())->where('id', $id)->update(['position' => $position]);
+        }
     }
 
     public function destroy(Request $request, $id) {
