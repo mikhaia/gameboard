@@ -23,6 +23,7 @@
     "@inertiajs/inertia-vue3": "^0.6.0",
     "@inertiajs/vue3": "^1.0.10",
     "@vitejs/plugin-vue": "^4.2.3",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "sortablejs": "^1.15.6"
   }
 }
