@@ -8,7 +8,7 @@ import Sortable from 'sortablejs'
 import axios from 'axios'
 
 const page = usePage()
-const boards = ref(page.props.boards)
+const boards = ref(page.props.boards || [])
 
 const openModal = (data) => {
   boardModal.methods.open(data)
@@ -23,7 +23,9 @@ const openPasswordModal = () => {
 }
 
 onMounted(() => {
-  Sortable.create(document.getElementById('boards-list'), {
+  const el = document.getElementById('boards-list')
+  if (!el) return
+  Sortable.create(el, {
     animation: 150,
     ghostClass: 'board-placeholder',
     draggable: '.board-item',
@@ -45,8 +47,8 @@ onMounted(() => {
 
 <template>
 <Toast></Toast>
-<div class="h-screen">
-  <aside class="bg-gray-800 z-10 h-screen sidebar">
+  <div class="h-screen">
+    <aside v-if="page.props.user" class="bg-gray-800 z-10 h-screen sidebar">
       <h1 class="text-white text-2xl font-bold text-center py-4">{{ page.props.appName }}</h1>
       <ul class="sidenav" id="boards-list">
         <li id="create-board">
@@ -77,35 +79,38 @@ onMounted(() => {
       </ul>
     </aside>
 
-    <main class="relative main">
-      <div class="user-panel">
-        <div class="user-info">
-          <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
-          <img v-else :src="'/img/avatar.png'" class="avatar">
-          {{ page.props.user.name }}
-          <Link href="/logout" class="exit">x</Link>
-        </div>
-        <div class="user-dropdown right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-          <div class="py-1">
-            <a @click="openProfileModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
-              <span class="material-symbols-outlined mr-2">manage_accounts</span>
-              <span>Profile settings</span>
-            </a>
-            <a @click="openPasswordModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
-              <span class="material-symbols-outlined mr-2">lock_reset</span>
-              <span>Change password</span>
-            </a>
-            <Link href="/logout" class="cursor-pointer flex items-center px-4 py-2 text-sm">
-              <span class="material-symbols-outlined mr-2">logout</span>
-              <span>Logout</span>
-            </Link>
+      <main class="relative main">
+        <div v-if="page.props.user" class="user-panel">
+          <div class="user-info">
+            <img v-if="page.props.user.avatar" :src="page.props.user.avatar" class="avatar" />
+            <img v-else :src="'/img/avatar.png'" class="avatar">
+            {{ page.props.user.name }}
+            <Link href="/logout" class="exit">x</Link>
+          </div>
+          <div class="user-dropdown right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <div class="py-1">
+              <a @click="openProfileModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+                <span class="material-symbols-outlined mr-2">manage_accounts</span>
+                <span>Profile settings</span>
+              </a>
+              <a @click="openPasswordModal()" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+                <span class="material-symbols-outlined mr-2">lock_reset</span>
+                <span>Change password</span>
+              </a>
+              <Link href="/logout" class="cursor-pointer flex items-center px-4 py-2 text-sm">
+                <span class="material-symbols-outlined mr-2">logout</span>
+                <span>Logout</span>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      <slot />
-      <boardModal></boardModal>
-      <profileModal></profileModal>
-      <passwordModal></passwordModal>
-    </main>
+        <div v-else class="user-panel">
+          <Link href="/auth" class="login">Login</Link>
+        </div>
+        <slot />
+        <boardModal v-if="page.props.user"></boardModal>
+        <profileModal v-if="page.props.user"></profileModal>
+        <passwordModal v-if="page.props.user"></passwordModal>
+      </main>
 </div>
 </template>
