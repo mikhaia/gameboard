@@ -80,79 +80,81 @@ function changeTodo(event, id) {
 
 /* Drag'n'Drop */
 // TODO: Refactoring Drag'n'Drop
-let isDragCard;
-document.addEventListener("dragstart", function(event) {
-  isDragCard = event.target.classList.contains('card');
+if (props.editable) {
+  let isDragCard;
+  document.addEventListener("dragstart", function(event) {
+    isDragCard = event.target.classList.contains('card');
 
-  if (isDragCard)
-    event.dataTransfer.setData("Text", event.target.closest('.card').id);
-  else
-    event.dataTransfer.setData("Text", event.target.closest('.drag').id);
+    if (isDragCard)
+      event.dataTransfer.setData("Text", event.target.closest('.card').id);
+    else
+      event.dataTransfer.setData("Text", event.target.closest('.drag').id);
 
-  event.target.classList.add('moving');
-});
+    event.target.classList.add('moving');
+  });
 
-document.addEventListener("drag", function(event) {
+  document.addEventListener("drag", function(event) {
 
-});
+  });
 
-document.addEventListener("dragend", function(event) {
-    event.target.classList.remove('moving');
-});
+  document.addEventListener("dragend", function(event) {
+      event.target.classList.remove('moving');
+  });
 
-document.addEventListener("dragenter", function(event) {
-  const droptarget = isDragCard ? 'card-droptarget' : 'droptarget';
-    if ( event.target.classList.contains(droptarget) ) {
-        event.target.classList.add('active');
-    }
-});
-
-document.addEventListener("dragover", function(event) {
-    event.preventDefault();
-});
-
-document.addEventListener("dragleave", function(event) {
-  const droptarget = isDragCard ? 'card-droptarget' : 'droptarget';
-    if ( event.target.classList.contains(droptarget) ) {
-      event.target.classList.remove('active');
-    }
-});
-
-document.addEventListener("drop", function(event) {
-    event.preventDefault();
+  document.addEventListener("dragenter", function(event) {
     const droptarget = isDragCard ? 'card-droptarget' : 'droptarget';
-    if ( event.target.classList.contains(droptarget) ) {
-      if (isDragCard) {
-        const card = document.getElementById(event.dataTransfer.getData("Text"));
-        const drop = card.nextSibling;
-        event.target.after(card);
-        card.after(drop);
-
-        const order = [];
-        const columnId = card.closest('.drag').getAttribute('id');
-        const cardId = card.getAttribute('id').substring(5);
-        const cards = card.closest('.card-container').children;
-        for (let i = 0; i < cards.length; i++)
-          if (cards[i].classList.contains('card'))
-            order.push(cards[i].id.substring(5));
-
-        axios.put('/cards/sort/'+columnId+'/'+cardId, order);
-        event.target.classList.remove('active');
-      } else {
-        const parent = event.target.closest('.drag-container');
-        parent.insertBefore(document.getElementById(event.dataTransfer.getData("Text")), event.target.closest('.drag').nextSibling)
-
-        event.target.classList.remove('active');
-        const order = [];
-        for (var i = 0; i < parent.children.length; i++) {
-          if (parent.children[i].classList.contains('drag'))
-            order.push(parent.children[i].id);
-        }
-
-        axios.put('/columns/sort/'+props.board.id, order);
+      if ( event.target.classList.contains(droptarget) ) {
+          event.target.classList.add('active');
       }
-    }
-});
+  });
+
+  document.addEventListener("dragover", function(event) {
+      event.preventDefault();
+  });
+
+  document.addEventListener("dragleave", function(event) {
+    const droptarget = isDragCard ? 'card-droptarget' : 'droptarget';
+      if ( event.target.classList.contains(droptarget) ) {
+        event.target.classList.remove('active');
+      }
+  });
+
+  document.addEventListener("drop", function(event) {
+      event.preventDefault();
+      const droptarget = isDragCard ? 'card-droptarget' : 'droptarget';
+      if ( event.target.classList.contains(droptarget) ) {
+        if (isDragCard) {
+          const card = document.getElementById(event.dataTransfer.getData("Text"));
+          const drop = card.nextSibling;
+          event.target.after(card);
+          card.after(drop);
+
+          const order = [];
+          const columnId = card.closest('.drag').getAttribute('id');
+          const cardId = card.getAttribute('id').substring(5);
+          const cards = card.closest('.card-container').children;
+          for (let i = 0; i < cards.length; i++)
+            if (cards[i].classList.contains('card'))
+              order.push(cards[i].id.substring(5));
+
+          axios.put('/cards/sort/'+columnId+'/'+cardId, order);
+          event.target.classList.remove('active');
+        } else {
+          const parent = event.target.closest('.drag-container');
+          parent.insertBefore(document.getElementById(event.dataTransfer.getData("Text")), event.target.closest('.drag').nextSibling)
+
+          event.target.classList.remove('active');
+          const order = [];
+          for (var i = 0; i < parent.children.length; i++) {
+            if (parent.children[i].classList.contains('drag'))
+              order.push(parent.children[i].id);
+          }
+
+          axios.put('/columns/sort/'+props.board.id, order);
+        }
+      }
+  });
+}
 
 let isLight = ref(props.board.dark);
 function switchMode() {
@@ -164,59 +166,59 @@ function switchMode() {
 <template>
   <Layout>
     <Head :title="'Board / ' + board.title" />
-    <div class="board" :class="{'mode-light': isLight, 'mode-dark': !isLight, 'readonly': !editable}"
-        :style="[board?.background ? { backgroundImage: 'url('+board?.background+')'} : {}]">
-        <div class="header">
-          <a class="cursor-pointer icon" @click="openBoardModal(board)">
-            <span class="material-symbols-outlined">edit</span>
-            <img :src="board?.icon">
-          </a>
-          <h1>{{ board.title }}</h1>
-          <div class="secure-icon">
-            <i class="material-symbols-outlined">
-                {{ board.public ? 'lock_open' : 'lock' }}
-            </i>
-          </div>
-          <div class="toggle-switch">
-            <label>
-                <input type="checkbox" @click="switchMode()" :checked="!isLight">
-                <span class="slider"></span>
-            </label>
+      <div class="board" :class="{'mode-light': isLight, 'mode-dark': !isLight, 'readonly': !editable}"
+          :style="[board?.background ? { backgroundImage: 'url('+board?.background+')'} : {}]">
+          <div class="header">
+            <a v-if="editable" class="cursor-pointer icon" @click="openBoardModal(board)">
+              <span class="material-symbols-outlined">edit</span>
+              <img :src="board?.icon">
+            </a>
+            <h1>{{ board.title }}</h1>
+            <div class="secure-icon" v-if="editable">
+              <i class="material-symbols-outlined">
+                  {{ board.public ? 'lock_open' : 'lock' }}
+              </i>
+            </div>
+            <div class="toggle-switch" v-if="editable">
+              <label>
+                  <input type="checkbox" @click="switchMode()" :checked="!isLight">
+                  <span class="slider"></span>
+              </label>
           </div>
         </div>
         <div class="columns drag-container">
           <!-- TODO: Add droptaget to fisrt place <div class="droptarget"></div> -->
-          <div v-for="column in columns" :id="column.id" class="drag">
-            <div class="glass column">
-                <h4 class="text-lg font-bold px-2 py-1" :class="{'text-white': board.dark }" draggable="true">
-                  <a class="float-right cursor-pointer edit-column" @click="openColumnModal(column)">⚙️</a>
-                  {{ column.title }}
-                </h4>
-                <div class="card-container">
-                  <div class="card-droptarget" v-if="!column.cards.length"></div>
-                  <template v-for="card in column.cards">
-                    <!-- <Card :card="card"></Card> -->
-                    <div class="card cursor-pointer shadow-md drag-card" @click="openCardModal(card, editable)" draggable="true" :id="'card-'+card.id">
-                        <img :src="card.cover" draggable="false"/>
-                        <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo, 'absolute': card.cover }" v-if="card.title">{{ card.title }}</h6>
-                        <div v-if="card.description" class="description" v-html="toHtml(card.description)"></div>
-                        <div v-if="card.todo"
-                          class="checklist p-2 cursor-default"
-                          v-html="toTodo(card.todo)"
-                          @click="stop($event)"
-                          @change="card.todo = changeTodo($event, card.id)"></div>
+            <div v-for="column in columns" :id="column.id" class="drag">
+              <div class="glass column">
+                  <h4 class="text-lg font-bold px-2 py-1" :class="{'text-white': board.dark }" :draggable="editable">
+                    <a v-if="editable" class="float-right cursor-pointer edit-column" @click="openColumnModal(column)">⚙️</a>
+                    {{ column.title }}
+                  </h4>
+                  <div class="card-container">
+                    <div class="card-droptarget" v-if="editable && !column.cards.length"></div>
+                    <template v-for="card in column.cards">
+                      <!-- <Card :card="card"></Card> -->
+                      <div class="card shadow-md drag-card" :class="{ 'cursor-pointer': editable }" @click="editable && openCardModal(card, editable)" :draggable="editable" :id="'card-'+card.id">
+                          <img :src="card.cover" draggable="false"/>
+                          <h6 class="px-2 py-1 title" :class="{'top-title': card.description || card.todo, 'absolute': card.cover }" v-if="card.title">{{ card.title }}</h6>
+                          <div v-if="card.description" class="description" v-html="toHtml(card.description)"></div>
+                          <div v-if="card.todo"
+                            class="checklist p-2 cursor-default"
+                            v-html="toTodo(card.todo)"
+                            @click="stop($event)"
+                            @change="card.todo = changeTodo($event, card.id)"></div>
                     </div>
-                    <div class="card-droptarget"></div>
-                  </template>
-                </div>
-                <a class="btn-create glass" @click="openCardModal({title: '', column_id: column.id}, editable)">Create new</a>
+                    <div class="card-droptarget" v-if="editable"></div>
+                    </template>
+                  </div>
+                  <a v-if="editable" class="btn-create glass" @click="openCardModal({title: '', column_id: column.id}, editable)">Create new</a>
+              </div>
+              <div class="droptarget" v-if="editable"></div>
             </div>
-            <div class="droptarget"></div>
+              <div v-if="editable" class="glass column add" @click="openColumnModal({title: 'New column', board_id: board.id})"></div>
           </div>
-            <div class="glass column add" @click="openColumnModal({title: 'New column', board_id: board.id})"></div>
         </div>
-      </div>
-      <columnModal></columnModal>
-      <cardModal></cardModal>
-  </Layout>
-</template>
+      <columnModal v-if="editable"></columnModal>
+      <cardModal v-if="editable"></cardModal>
+    </Layout>
+  </template>
