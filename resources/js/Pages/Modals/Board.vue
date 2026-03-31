@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm } from '@inertiajs/vue3';
-//   import Toast from '../Inc/Toast.vue';
+  import { showToast } from '../../toast';
   let data = ref();
   let title = ref();
   let displayDetails = ref();
@@ -12,7 +12,7 @@
   export default {
     name: 'boardModal',
     setup() {
-      return {data, title, focus};
+      return {data, title, displayDetails, form, focus};
     },
     methods: {
       open(value, expanded = false) {
@@ -46,7 +46,7 @@
               errors = err.msg;
             },
             onSuccess: () => {
-              Toast.show('Board saved successfully', 'success');
+              showToast('Board saved successfully', 'success');
               this.close();
             }
           })
@@ -63,7 +63,7 @@
         if (confirm('Are you sure to delete this board?')) {
           form.delete('/boards/'+data.value.id, {
             onSuccess: (response) => {
-              Toast.show(response.props.toast.success, 'success');
+              showToast(response.props.toast.success, 'success');
               this.close();
             }
           });
@@ -131,7 +131,7 @@
               </div>
             </div>
           </div>
-          <div v-if="!readonly" class="flex">
+          <div class="flex">
             <button type="submit" class="button w-full">Save</button>
             <button type="button" class="button secondary w-14 ml-3" @click="remove()" v-if="data.id">
                 <span class="material-symbols-outlined icon">delete</span>

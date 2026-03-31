@@ -46,10 +46,10 @@ function createNewBoard() {
         </li>
         <li>
           <div class="card cursor-pointer">
-            <Link href="http://board.neapp.ru/boards/01hbzhapktrn3tr634p356hht1">
+            <a href="https://board.neapp.ru/boards/01hbzhapktrn3tr634p356hht1" target="_blank">
               <div class="back" :style="{backgroundImage: 'url(./img/dashboard/bug-report.jpg)'}"></div>
               <h6 class="px-2 py-1 title w-full text-center">Bug List</h6>
-            </Link>
+            </a>
           </div>
         </li>
         <li>
