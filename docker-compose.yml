@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    working_dir: /var/www/html
+    entrypoint: ["sh", "/var/www/html/docker/php/entrypoint.sh"]
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      APP_URL: http://localhost:8000
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
+    volumes:
+      - .:/var/www/html
+      - vendor:/var/www/html/vendor
+      - composer_cache:/tmp/composer-cache
+
+  node:
+    image: node:20-bookworm
+    working_dir: /var/www/html
+    entrypoint: ["sh", "/var/www/html/docker/node/entrypoint.sh"]
+    depends_on:
+      - app
+    ports:
+      - "5173:5173"
+    environment:
+      DOCKER: "true"
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: 250
+      VITE_HMR_HOST: localhost
+      VITE_PORT: 5173
+      VITE_WATCH_USE_POLLING: "true"
+      VITE_WATCH_INTERVAL: 250
+    volumes:
+      - .:/var/www/html
+      - node_modules:/var/www/html/node_modules
+      - npm_cache:/root/.npm
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  vendor:
+  node_modules:
+  composer_cache:
+  npm_cache:

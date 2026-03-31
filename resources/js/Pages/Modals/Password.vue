@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-//   import Toast from '../Inc/Toast.vue';
+  import { showToast } from '../../toast';
   let data = ref();
   let title = ref('Change password');
   let form = ref();
@@ -12,7 +12,7 @@
   export default {
     name: 'profileModal',
     setup() {
-      return {data, title, isShow};
+      return {data, title, form, errors, isShow};
     },
     methods: {
       open() {
@@ -36,7 +36,7 @@
             },
             onSuccess: (data) => {
               errors.value = false;
-              Toast.show(data.props.toast.success, 'success');
+              showToast(data.props.toast.success, 'success');
               this.close();
             }
           })

@@ -1,0 +1,1 @@
+import{h as e}from"./app-5dbbce64.js";const s=e(!1),r=e(""),u=e("error");let a;function l(t,o="error"){t&&(s.value=!0,r.value=t,u.value=o,clearTimeout(a),a=setTimeout(()=>{s.value=!1},3e3))}export{u as a,r as b,l as s,s as t};

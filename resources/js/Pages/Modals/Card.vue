@@ -1,7 +1,7 @@
 <script>
   import { ref } from 'vue';
   import { useForm, usePage } from '@inertiajs/vue3';
-//   import Toast from '../Inc/Toast.vue';
+  import { showToast } from '../../toast';
   let data = ref();
   let title = ref();
   let form = ref();
@@ -13,7 +13,7 @@
   export default {
     name: 'cardModal',
     setup() {
-      return {data, title};
+      return {data, title, form, readonly, focus};
     },
     methods: {
       open(value, editable = false) {
@@ -53,7 +53,7 @@
               errors.value = err.msg;
             },
             onSuccess: () => {
-              Toast.show('Card saved successfully', 'success');
+              showToast('Card saved successfully', 'success');
               this.close();
             }
           })
@@ -81,7 +81,7 @@
       remove() {
         if (confirm('Are you sure to delete this card?')) {
           axios.delete('/cards/'+data.value.id).then(response => {
-            Toast.show(response.data.success, 'success');
+            showToast(response.data.success, 'success');
             history.go()
           });
         }
