@@ -48,9 +48,11 @@ Route::get('steam', SteamAuthController::class);
 Route::get('google', GoogleAuthController::class);
 Route::get('logout', [AuthController::class, 'logout']);
 
+Route::get('boards/{board}', [BoardController::class, 'show'])->name('boards.show');
+
 
 Route::middleware(['auth'])->group(function () {
-  Inertia::share('boards', fn() => Board::where('user_id', Auth::id())->get());
+  Inertia::share('boards', fn() => Board::where('user_id', Auth::id())->orderBy('position', 'asc')->get());
   Inertia::share('columns', function() {
     if (Route::current()->parameters && isset(Route::current()->parameters['board'])) {
       return Column::where('board_id', Route::current()->parameters['board'])->orderBy('position', 'asc')->get();
@@ -61,8 +63,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/', [IndexController::class, 'index'])->name('index');
   Route::get('author', [IndexController::class, 'author'])->name('author');
   Route::get('about', [IndexController::class, 'about'])->name('about');
-  Route::resource('boards', BoardController::class);
+  Route::put('boards/sort', [BoardController::class, 'sort']);
   Route::put('boards/switch/{boardId}', [BoardController::class, 'switch']);
+  Route::resource('boards', BoardController::class)->except(['show']);
   Route::resource('columns', ColumnController::class);
   Route::put('columns/sort/{boardId}', [ColumnController::class, 'sort']);
   Route::resource('cards', CardController::class);

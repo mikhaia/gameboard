@@ -7,6 +7,7 @@
     <link rel="icon" sizes="128x128" type="image/png" href="{{ asset('favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     @vite(['resources/js/app.js', 'resources/css/app.styl'])
+    <link rel="stylesheet" href="{{ asset('css/img.css') }}">
     @inertiaHead
   </head>
   <body>

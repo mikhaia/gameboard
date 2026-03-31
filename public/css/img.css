@@ -1,0 +1,15 @@
+.google {
+    background-image: url('../img/google.jpg');
+}
+
+.steam {
+    background-image: url('../img/steam.jpg');
+}
+
+.login {
+    background-image: url('../img/login.jpg');
+}
+
+.board, .dashboard {
+    background-image: url('../img/board.jpg');
+}
