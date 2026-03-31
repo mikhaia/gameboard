@@ -1,44 +1,29 @@
-<script>
-  import { ref } from 'vue';
-  let isShowing = ref();
-  let message = ref();
-  let type = ref('error');
-  let show = ref();
-
-  show = (msg, msgType = 'error') => {
-      isShowing.value = true;
-      message.value = msg;
-      type.value = msgType;
-      setTimeout(function(){
-        isShowing.value = false;
-      }, 3000);
-  };
-
-  export default {
-    name: 'Toast',
-    setup() {
-      return {isShowing, message, type};
-    },
-    show(msg, type) {
-      show(msg, type);
-    }
-  };
-</script>
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { watch } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+import { showToast, toastMessage, toastType, toastVisible } from '../../toast'
+
 const page = usePage()
-if (page.props.toast.success) {
-  show(page.props.toast.success, 'success');
-}
-if (page.props.toast.error) {
-  show(page.props.toast.error, 'error');
-}
+
+watch(
+  () => page.props.toast,
+  (toast) => {
+    if (toast?.success) {
+      showToast(toast.success, 'success')
+    }
+
+    if (toast?.error) {
+      showToast(toast.error, 'error')
+    }
+  },
+  { immediate: true, deep: true }
+)
 </script>
 <template>
     <div
-        :class="{'opacity-0': !isShowing, 'opacity-100': isShowing, 'z-0': !isShowing}"
+        :class="{'opacity-0': !toastVisible, 'opacity-100': toastVisible, 'z-0': !toastVisible}"
         class="toast"
-        v-bind:class="type"
-        v-html="message"
+        v-bind:class="toastType"
+        v-html="toastMessage"
       ></div>
 </template>
